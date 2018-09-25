@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="tabs">
+    <item>Total</item>
+    <item>Romantic</item>
+    <item>Personality</item>
+    <item>Blood group</item>
+    <item>Love</item>
+    <item>Job</item>
+    <item>Image</item>
+    <item>Marriage</item>
+    <item>Animal</item>
+    <item>Color</item>
+    <item>A former life</item>
+    <item>Game</item>
+  </string-array>
+  <string-array name="q">
+    <item>Psycology test</item>
+    <item>romantic psychology test</item>
+    <item>Personality psychology test</item>
+    <item>blood group psychology test</item>
+    <item>love psychology test</item>
+    <item>job psychology test</item>
+    <item>psychology test images</item>
+    <item>psychology test marriage</item>
+    <item>psychology animal</item>
+    <item>psychology test color</item>
+    <item>psychology test a former life</item>
+    <item>Psychology test game</item>
+  </string-array>
+</resources>
