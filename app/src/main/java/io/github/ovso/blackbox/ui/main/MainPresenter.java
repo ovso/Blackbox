@@ -3,6 +3,7 @@ package io.github.ovso.blackbox.ui.main;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
+import io.github.ovso.blackbox.data.NavMenu;
 
 public interface MainPresenter {
 
@@ -22,11 +23,11 @@ public interface MainPresenter {
 
     void finish();
 
-    void showBlackBox();
+    void showBlackBox(NavMenu menu);
 
-    void showMisRatio();
+    void showMisRatio(NavMenu menu);
 
-    void showCopiWith();
+    void showCopiWith(NavMenu menu);
 
     void showMessage(@StringRes int resId);
 

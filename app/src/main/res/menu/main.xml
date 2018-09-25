@@ -3,7 +3,7 @@
   <item
       android:id="@id/action_black_box"
       android:icon="@drawable/ic_action_name"
-      android:title="@string/blackbox"/>
+      android:title="@string/black_box"/>
   <item
       android:id="@id/action_mis_ratio"
       android:icon="@drawable/ic_pie_chart"

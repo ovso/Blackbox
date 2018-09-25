@@ -2,7 +2,7 @@
   <string name="app_name">맨인블랙박스</string>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
-  <string name="blackbox">블랙박스</string>
+  <string name="black_box">블랙박스</string>
   <string name="mis_ratio">몇대몇</string>
   <string name="copi_with">사고대처</string>
   <string name="opensource_license">오픈소스 라이선스</string>

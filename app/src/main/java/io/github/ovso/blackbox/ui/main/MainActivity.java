@@ -10,6 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.FrameLayout;
 import butterknife.BindView;
 import io.github.ovso.blackbox.R;
+import io.github.ovso.blackbox.data.KeyName;
+import io.github.ovso.blackbox.data.NavMenu;
 import io.github.ovso.blackbox.ui.base.view.BaseActivity;
 import io.github.ovso.blackbox.ui.main.fragment.VideoFragment;
 import javax.inject.Inject;
@@ -45,27 +47,35 @@ public class MainActivity extends BaseActivity
     drawer.closeDrawer(GravityCompat.START);
   }
 
-  @Override public void showBlackBox() {
+  @Override public void showBlackBox(NavMenu menu) {
     getSupportFragmentManager().beginTransaction()
         .setCustomAnimations(R.animator.enter_animation, R.animator.exit_animation,
             R.animator.enter_animation, R.animator.exit_animation)
-        .replace(R.id.fragment_container, VideoFragment.newInstance(new Bundle()))
+        .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
         .commit();
   }
 
-  @Override public void showMisRatio() {
+  @Override public void showMisRatio(NavMenu menu) {
     getSupportFragmentManager().beginTransaction()
         .setCustomAnimations(R.animator.enter_animation, R.animator.exit_animation,
             R.animator.enter_animation, R.animator.exit_animation)
-        .replace(R.id.fragment_container, VideoFragment.newInstance(new Bundle()))
+        .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
         .commit();
   }
 
-  @Override public void showCopiWith() {
+  private Bundle createArgs(NavMenu menu) {
+    Bundle args = new Bundle();
+    args.putInt(KeyName.POSITION.get(), menu.getPosition());
+    return args;
+  }
+
+  @Override public void showCopiWith(NavMenu menu) {
+    Bundle args = new Bundle();
+    args.putSerializable(KeyName.NAV_MENU.get(), menu);
     getSupportFragmentManager().beginTransaction()
         .setCustomAnimations(R.animator.enter_animation, R.animator.exit_animation,
             R.animator.enter_animation, R.animator.exit_animation)
-        .replace(R.id.fragment_container, VideoFragment.newInstance(new Bundle()))
+        .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
         .commit();
   }
 

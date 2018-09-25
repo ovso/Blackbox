@@ -2,9 +2,9 @@
   <string name="app_name">Men in blackbox</string>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
-  <string name="blackbox">By symptom</string>
-  <string name="mis_ratio">Theme</string>
-  <string name="copi_with">Hemi</string>
+  <string name="black_box">Blackbox</string>
+  <string name="mis_ratio">Mistake Radio</string>
+  <string name="copi_with">Coping With</string>
   <string name="opensource_license">Open Source License</string>
   <string name="youtube_use_warning">You must have a YouTube app installed. \n\n If you have the YouTube app installed, you will need to change the setting from \ "Disable \" to \ 'Use \'.</string>
   <string name="my_email">ovsoc@daum.net</string>

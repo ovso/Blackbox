@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="tabs">
-    <item>전체</item>
-    <item>연애</item>
-    <item>성격</item>
-    <item>혈액형</item>
-    <item>사랑</item>
-    <item>직업</item>
-    <item>그림</item>
-    <item>결혼</item>
-    <item>동물</item>
-    <item>색깔</item>
-    <item>전생</item>
-    <item>게임</item>
+  <string-array name="nav_menu">
+    <item>블랙박스</item>
+    <item>몇대몇</item>
+    <item>사고대처</item>
   </string-array>
   <string-array name="q">
-    <item>심리테스트</item>
-    <item>심리테스트 연애</item>
-    <item>심리테스트 성격</item>
-    <item>혈액형별 심리테스트</item>
-    <item>심리테스트 사랑</item>
-    <item>심리테스트 직업</item>
-    <item>심리테스트 그림</item>
-    <item>심리테스트 결혼</item>
-    <item>심리테스트 동물</item>
-    <item>심리테스트 색깔</item>
-    <item>심리테스트 전생</item>
-    <item>심리테스트 게임</item>
+    <item>블랙박스</item>
+    <item>몇대몇 한문철</item>
+    <item>사고대처</item>
   </string-array>
 </resources>

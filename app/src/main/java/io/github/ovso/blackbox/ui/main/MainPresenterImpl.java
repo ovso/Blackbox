@@ -3,6 +3,8 @@ package io.github.ovso.blackbox.ui.main;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import io.github.ovso.blackbox.R;
+import io.github.ovso.blackbox.data.KeyName;
+import io.github.ovso.blackbox.data.NavMenu;
 import io.github.ovso.blackbox.utils.ResourceProvider;
 import io.github.ovso.blackbox.utils.SchedulersFacade;
 import io.reactivex.disposables.CompositeDisposable;
@@ -26,7 +28,7 @@ public class MainPresenterImpl implements MainPresenter {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     view.setListener();
-    //view.showBlackBox();
+    view.showBlackBox(NavMenu.BLACK_BOX);
   }
 
   @Override public boolean onNavItemSelected(int itemId) {
@@ -38,13 +40,13 @@ public class MainPresenterImpl implements MainPresenter {
     if (!isChecked) {
       switch (itemId) {
         case R.id.action_black_box:
-          view.showBlackBox();
+          view.showBlackBox(NavMenu.BLACK_BOX);
           break;
         case R.id.action_mis_ratio:
-          view.showMisRatio();
+          view.showMisRatio(NavMenu.MIS_RATIO);
           break;
         case R.id.action_copi_with:
-          view.showCopiWith();
+          view.showCopiWith(NavMenu.COPI_WITH);
           break;
       }
     }

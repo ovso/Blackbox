@@ -9,13 +9,11 @@ import io.github.ovso.blackbox.data.KeyName;
 import io.github.ovso.blackbox.data.VideoMode;
 import io.github.ovso.blackbox.data.network.SearchRequest;
 import io.github.ovso.blackbox.data.network.model.SearchItem;
-import io.github.ovso.blackbox.ui.main.fragment.VideoFragmentPresenter;
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel;
 import io.github.ovso.blackbox.utils.ResourceProvider;
 import io.github.ovso.blackbox.utils.SchedulersFacade;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import java.util.Collections;
 import java.util.List;
 import timber.log.Timber;
 
@@ -43,7 +41,6 @@ public class VideoFragmentPresenterImpl implements
   }
 
   @Override public void onActivityCreated(Bundle args) {
-    Timber.d("onActivityCreated");
     view.setupRecyclerView();
     view.setupSwipeRefresh();
     view.showLoading();
@@ -56,15 +53,11 @@ public class VideoFragmentPresenterImpl implements
             search -> {
               nextPageToken = search.getNextPageToken();
               List<SearchItem> items = search.getItems();
-              shuffle(items);
               adapterDataModel.addAll(items);
               view.refresh();
               view.setLoaded();
               view.hideLoading();
-            }, throwable -> {
-              Timber.d(throwable);
-              view.hideLoading();
-            });
+            }, throwable -> view.hideLoading());
     compositeDisposable.add(disposable);
   }
 
@@ -106,13 +99,10 @@ public class VideoFragmentPresenterImpl implements
               search -> {
                 nextPageToken = search.getNextPageToken();
                 List<SearchItem> items = search.getItems();
-                shuffle(items);
                 adapterDataModel.addAll(items);
                 view.refresh();
                 view.setLoaded();
-              }, throwable -> {
-                Timber.d(throwable);
-              });
+              }, throwable -> Timber.d(throwable));
       compositeDisposable.add(disposable);
     }
   }
@@ -129,7 +119,6 @@ public class VideoFragmentPresenterImpl implements
             search -> {
               nextPageToken = search.getNextPageToken();
               List<SearchItem> items = search.getItems();
-              shuffle(items);
               adapterDataModel.addAll(items);
               view.refresh();
               view.setLoaded();
@@ -141,7 +130,7 @@ public class VideoFragmentPresenterImpl implements
     compositeDisposable.add(disposable);
   }
 
-  private <E> void shuffle(List<E> $items) {
-    Collections.shuffle($items);
-  }
+  //private <E> void shuffle(List<E> $items) {
+  //  Collections.shuffle($items);
+  //}
 }
