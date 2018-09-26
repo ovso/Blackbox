@@ -24,7 +24,7 @@ ext {
   firebase_core_version = '16.0.1'
   firebase_crashlytics_version = '2.9.3'
 
-  recyclerview_animators_version = '2.2.7'
+  recyclerview_animators_version = '2.3.0'
   licensesdialog_version = '1.8.3'
   glide_version = '4.0.0'
 

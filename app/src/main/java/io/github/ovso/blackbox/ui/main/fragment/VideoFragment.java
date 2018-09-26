@@ -20,6 +20,7 @@ import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterView;
 import io.github.ovso.blackbox.ui.video.LandscapeVideoActivity;
 import io.github.ovso.blackbox.ui.video.PortraitVideoActivity;
 import javax.inject.Inject;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 public class VideoFragment extends BaseFragment implements VideoFragmentPresenter.View,
     OnRecyclerViewItemClickListener<SearchItem>,
@@ -52,7 +53,6 @@ public class VideoFragment extends BaseFragment implements VideoFragmentPresente
 
   @Override public void setupRecyclerView() {
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    recyclerView.setAdapter(adapter);
     recyclerView.setOnItemClickListener(this);
     recyclerView.addOnScrollListener(
         new OnEndlessRecyclerScrollListener
@@ -60,6 +60,10 @@ public class VideoFragment extends BaseFragment implements VideoFragmentPresente
             .setVisibleThreshold(20)
             .build()
     );
+    ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(adapter);
+    animationAdapter.setDuration(300);
+    animationAdapter.setFirstOnly(false);
+    recyclerView.setAdapter(animationAdapter);
   }
 
   @Override public void refresh() {
