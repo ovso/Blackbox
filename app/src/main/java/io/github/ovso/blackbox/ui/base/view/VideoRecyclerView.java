@@ -15,12 +15,12 @@ public class VideoRecyclerView extends RecyclerView {
   private OnRecyclerViewItemClickListener
       onRecyclerViewItemClickListener;
   @Getter private OnEndlessRecyclerScrollListener onEndlessRecyclerScrollListener;
+
   public VideoRecyclerView(@NonNull Context context) {
     super(context);
   }
 
-  public VideoRecyclerView(@NonNull Context context,
-      @Nullable AttributeSet attrs) {
+  public VideoRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
     super(context, attrs);
   }
 
@@ -33,8 +33,7 @@ public class VideoRecyclerView extends RecyclerView {
     setOnItemClickListener(adapter);
   }
 
-  public void setOnItemClickListener(
-      OnRecyclerViewItemClickListener listener) {
+  public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
     onRecyclerViewItemClickListener = listener;
     setOnItemClickListener(getAdapter());
   }
@@ -42,8 +41,8 @@ public class VideoRecyclerView extends RecyclerView {
   private void setOnItemClickListener(Adapter adapter) {
     if (!ObjectUtils.isEmpty(adapter)) {
       if ((adapter instanceof VideoAdapter)) {
-        ((VideoAdapter) adapter).setOnRecyclerViewItemClickListener(
-            onRecyclerViewItemClickListener);
+        VideoAdapter videoAdapter = (VideoAdapter) adapter;
+        videoAdapter.setOnRecyclerViewItemClickListener(onRecyclerViewItemClickListener);
       }
     }
   }

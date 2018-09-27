@@ -63,12 +63,6 @@ public class MainActivity extends BaseActivity
         .commit();
   }
 
-  private Bundle createArgs(NavMenu menu) {
-    Bundle args = new Bundle();
-    args.putInt(KeyName.POSITION.get(), menu.getPosition());
-    return args;
-  }
-
   @Override public void showCopiWith(NavMenu menu) {
     Bundle args = new Bundle();
     args.putSerializable(KeyName.NAV_MENU.get(), menu);
@@ -77,6 +71,12 @@ public class MainActivity extends BaseActivity
             R.animator.enter_animation, R.animator.exit_animation)
         .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
         .commit();
+  }
+
+  private Bundle createArgs(NavMenu menu) {
+    Bundle args = new Bundle();
+    args.putInt(KeyName.POSITION.get(), menu.getPosition());
+    return args;
   }
 
   @Override protected int getLayoutResID() {

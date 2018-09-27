@@ -10,6 +10,6 @@
       android:title="@string/mis_ratio"/>
   <item
       android:id="@id/action_copi_with"
-      android:icon="@drawable/ic_fingerprint"
+      android:icon="@drawable/ic_report_problem"
       android:title="@string/copi_with"/>
 </menu>

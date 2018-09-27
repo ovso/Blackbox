@@ -15,6 +15,7 @@ import io.github.ovso.blackbox.R;
 import io.github.ovso.blackbox.data.network.model.SearchItem;
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener;
 import io.github.ovso.blackbox.utils.DateUtils;
+import io.github.ovso.blackbox.utils.ObjectUtils;
 import lombok.Setter;
 
 public class VideoViewHolder extends RecyclerView.ViewHolder implements Bindable<SearchItem> {
@@ -47,6 +48,8 @@ public class VideoViewHolder extends RecyclerView.ViewHolder implements Bindable
   }
 
   @OnClick(R.id.play_button) void onClick(View view) {
-    onRecyclerViewItemClickListener.onItemClick(view, data, 0);
+    if (!ObjectUtils.isEmpty(onRecyclerViewItemClickListener)) {
+      onRecyclerViewItemClickListener.onItemClick(view, data, 0);
+    }
   }
 }
