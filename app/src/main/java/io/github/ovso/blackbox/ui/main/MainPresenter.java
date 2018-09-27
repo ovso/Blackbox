@@ -34,5 +34,7 @@ public interface MainPresenter {
     void showMessage(String msg);
 
     void changeTheme();
+
+    void removeBottomNavMenu();
   }
 }

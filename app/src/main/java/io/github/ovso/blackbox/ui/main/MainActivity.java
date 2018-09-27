@@ -16,8 +16,7 @@ import io.github.ovso.blackbox.ui.base.view.BaseActivity;
 import io.github.ovso.blackbox.ui.main.fragment.VideoFragment;
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity
-    implements MainPresenter.View {
+public class MainActivity extends BaseActivity implements MainPresenter.View {
 
   @Inject MainPresenter presenter;
   @BindView(R.id.drawer_layout) DrawerLayout drawer;
@@ -33,8 +32,8 @@ public class MainActivity extends BaseActivity
     ActionBarDrawerToggle toggle =
         new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
             R.string.navigation_drawer_close);
-    drawer.addDrawerListener(toggle);
-    toggle.syncState();
+    //drawer.addDrawerListener(toggle);
+    //toggle.syncState();
     navigationView.setNavigationItemSelectedListener(
         item -> presenter.onNavItemSelected(item.getItemId()));
     bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -95,5 +94,10 @@ public class MainActivity extends BaseActivity
 
   @Override public void changeTheme() {
     setTheme(R.style.AppTheme_NoActionBar);
+  }
+
+  @Override public void removeBottomNavMenu() {
+    bottomNavigationView.getMenu().removeItem(R.id.action_mis_ratio);
+    bottomNavigationView.getMenu().removeItem(R.id.action_copi_with);
   }
 }

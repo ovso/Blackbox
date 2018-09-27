@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="nav_menu">
-    <item>Total</item>
-    <item>Romantic</item>
-    <item>Personality</item>
+    <item>Blackbox</item>
+    <item>Accident rate</item>
+    <item>Coping with</item>
   </string-array>
   <string-array name="q">
-    <item>Psycology test</item>
-    <item>romantic psychology test</item>
-    <item>Personality psychology test</item>
+    <item>Car accident</item>
+    <item>몇대몇 한문철</item>
+    <item>Coping with for car accident</item>
   </string-array>
 </resources>

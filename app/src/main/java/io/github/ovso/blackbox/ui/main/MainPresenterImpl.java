@@ -3,10 +3,7 @@ package io.github.ovso.blackbox.ui.main;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import io.github.ovso.blackbox.R;
-import io.github.ovso.blackbox.data.KeyName;
 import io.github.ovso.blackbox.data.NavMenu;
-import io.github.ovso.blackbox.utils.ResourceProvider;
-import io.github.ovso.blackbox.utils.SchedulersFacade;
 import io.reactivex.disposables.CompositeDisposable;
 import javax.inject.Inject;
 
@@ -14,21 +11,26 @@ public class MainPresenterImpl implements MainPresenter {
 
   private MainPresenter.View view;
   private CompositeDisposable compositeDisposable;
-  private ResourceProvider resourceProvider;
-  private SchedulersFacade schedulersFacade;
+  private String language;
 
-  @Inject public MainPresenterImpl(MainPresenter.View view, ResourceProvider $resourceProvider,
-      SchedulersFacade $schedulers) {
+  @Inject public MainPresenterImpl(MainPresenter.View view, String $language) {
     this.view = view;
-    resourceProvider = $resourceProvider;
-    schedulersFacade = $schedulers;
+    language = $language;
     this.compositeDisposable = new CompositeDisposable();
     view.changeTheme();
   }
 
   @Override public void onCreate(Bundle savedInstanceState) {
     view.setListener();
+
+    setupBottomNav();
     view.showBlackBox(NavMenu.BLACK_BOX);
+  }
+
+  private void setupBottomNav() {
+    if (!language.equalsIgnoreCase("ko")) {
+      view.removeBottomNavMenu();
+    }
   }
 
   @Override public boolean onNavItemSelected(int itemId) {
