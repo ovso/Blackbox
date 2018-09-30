@@ -45,6 +45,7 @@ public class VideoFragmentPresenterImpl implements
     view.setupSwipeRefresh();
     view.showLoading();
     position = args.getInt(KeyName.POSITION.get());
+    view.changeTitle(getTitle());
     q = resourceProvider.getStringArray(R.array.q)[position];
     Disposable disposable = searchRequest.getResult(q, nextPageToken)
         .subscribeOn(schedulersFacade.io())
@@ -59,6 +60,14 @@ public class VideoFragmentPresenterImpl implements
               view.hideLoading();
             }, throwable -> view.hideLoading());
     compositeDisposable.add(disposable);
+  }
+
+  private StringBuilder getTitle() {
+    StringBuilder builder = new StringBuilder();
+    builder.append(resourceProvider.getString(R.string.app_name));
+    builder.append(" - ");
+    builder.append(resourceProvider.getStringArray(R.array.nav_menu)[position]);
+    return builder;
   }
 
   @Override public void onDestroyView() {

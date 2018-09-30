@@ -134,8 +134,6 @@ dependencies {
 
   compileOnly "javax.annotation:jsr250-api:$jsr250_version"
 
-  implementation "jp.wasabeef:recyclerview-animators:$recyclerview_animators_version"
-
   annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
   implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -143,8 +141,6 @@ dependencies {
   implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
   implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
   implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
-
-  implementation "jp.wasabeef:recyclerview-animators:$recyclerview_animators_version"
 }
 
 // ADD THIS AT THE BOTTOM

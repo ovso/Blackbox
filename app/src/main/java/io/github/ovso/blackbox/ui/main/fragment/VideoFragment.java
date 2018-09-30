@@ -20,7 +20,6 @@ import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterView;
 import io.github.ovso.blackbox.ui.video.LandscapeVideoActivity;
 import io.github.ovso.blackbox.ui.video.PortraitVideoActivity;
 import javax.inject.Inject;
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 public class VideoFragment extends BaseFragment implements VideoFragmentPresenter.View,
     OnRecyclerViewItemClickListener<SearchItem>,
@@ -53,17 +52,14 @@ public class VideoFragment extends BaseFragment implements VideoFragmentPresente
 
   @Override public void setupRecyclerView() {
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    adapter.setOnRecyclerViewItemClickListener(this);
-    ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(adapter);
-    animationAdapter.setDuration(200);
-    animationAdapter.setFirstOnly(false);
+    recyclerView.setOnItemClickListener(this);
     recyclerView.addOnScrollListener(
         new OnEndlessRecyclerScrollListener
             .Builder((LinearLayoutManager) recyclerView.getLayoutManager(), this)
             .setVisibleThreshold(20)
             .build()
     );
-    recyclerView.setAdapter(animationAdapter);
+    recyclerView.setAdapter(adapter);
   }
 
   @Override public void refresh() {
@@ -111,6 +107,10 @@ public class VideoFragment extends BaseFragment implements VideoFragmentPresente
 
   @Override public void showLoading() {
     swipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void changeTitle(CharSequence title) {
+    getActivity().setTitle(title);
   }
 
   @Override public void onItemClick(View view, SearchItem data, int itemPosition) {

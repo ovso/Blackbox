@@ -37,5 +37,7 @@ public interface VideoFragmentPresenter {
     void hideLoading();
 
     void showLoading();
+
+    void changeTitle(CharSequence title);
   }
 }
