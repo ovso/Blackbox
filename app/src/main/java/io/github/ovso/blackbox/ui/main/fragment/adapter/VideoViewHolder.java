@@ -16,6 +16,7 @@ import io.github.ovso.blackbox.data.network.model.SearchItem;
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener;
 import io.github.ovso.blackbox.utils.DateUtils;
 import io.github.ovso.blackbox.utils.ObjectUtils;
+import java.util.Locale;
 import lombok.Setter;
 
 public class VideoViewHolder extends RecyclerView.ViewHolder implements Bindable<SearchItem> {
@@ -43,8 +44,17 @@ public class VideoViewHolder extends RecyclerView.ViewHolder implements Bindable
         .load($data.getSnippet().getThumbnails().getMedium().getUrl())
         .into(thumbnailImageView);
     titleTextView.setText($data.getSnippet().getTitle());
+
+    String language = Locale.getDefault().getLanguage();
+    String format;
+    if (language.equalsIgnoreCase("ko")) {
+      format = "yyyy년 MM월 dd일 HH시 mm분";
+    } else {
+      format = "yyyy/MM/dd HH:mm";
+    }
+
     dateTextView.setText(
-        DateUtils.getDate($data.getSnippet().getPublishedAt(), "yyyy년 MM월 dd일 HH시 mm분"));
+        DateUtils.getDate($data.getSnippet().getPublishedAt(), format));
   }
 
   @OnClick(R.id.play_button) void onClick(View view) {

@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter public enum NavMenu {
   BLACK_BOX(0),
   MIS_RATIO(1),
-  COPI_WITH(2);
+  COPI_WITH(2),
+  OVER_SEAS(3);
 
   private int position;
 

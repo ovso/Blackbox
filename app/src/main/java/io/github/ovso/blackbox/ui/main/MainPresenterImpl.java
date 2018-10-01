@@ -50,6 +50,10 @@ public class MainPresenterImpl implements MainPresenter {
         case R.id.action_copi_with:
           view.showCopiWith(NavMenu.COPI_WITH);
           break;
+        case R.id.action_oversease_black_box:
+          view.showCopiWith(NavMenu.COPI_WITH);
+          view.showOverSeas(NavMenu.OVER_SEAS);
+          break;
       }
     }
     return true;

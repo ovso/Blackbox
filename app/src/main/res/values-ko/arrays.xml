@@ -4,10 +4,12 @@
     <item>블랙박스</item>
     <item>몇대몇</item>
     <item>사고대처</item>
+    <item>해외 블랙박스</item>
   </string-array>
   <string-array name="q">
-    <item>교통사고 블랙박스 한국</item>
+    <item>한국 블랙박스 사고</item>
     <item>몇대몇 한문철</item>
     <item>자동차 사고 대처</item>
+    <item>해외 블랙박스 사고</item>
   </string-array>
 </resources>

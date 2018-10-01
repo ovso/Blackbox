@@ -6,6 +6,7 @@
   <item name="fragment_container" type="id"/>
   <item name="bottom_navigation_view" type="id"/>
   <item name="action_black_box" type="id"/>
+  <item name="action_oversease_black_box" type="id"/>
   <item name="action_copi_with" type="id"/>
   <item name="action_mis_ratio" type="id"/>
   <item name="recyclerview" type="id"/>

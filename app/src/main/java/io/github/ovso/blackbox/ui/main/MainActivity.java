@@ -63,8 +63,14 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   }
 
   @Override public void showCopiWith(NavMenu menu) {
-    Bundle args = new Bundle();
-    args.putSerializable(KeyName.NAV_MENU.get(), menu);
+    getSupportFragmentManager().beginTransaction()
+        .setCustomAnimations(R.animator.enter_animation, R.animator.exit_animation,
+            R.animator.enter_animation, R.animator.exit_animation)
+        .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
+        .commit();
+  }
+
+  @Override public void showOverSeas(NavMenu menu) {
     getSupportFragmentManager().beginTransaction()
         .setCustomAnimations(R.animator.enter_animation, R.animator.exit_animation,
             R.animator.enter_animation, R.animator.exit_animation)
@@ -99,5 +105,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   @Override public void removeBottomNavMenu() {
     bottomNavigationView.getMenu().removeItem(R.id.action_mis_ratio);
     bottomNavigationView.getMenu().removeItem(R.id.action_copi_with);
+    bottomNavigationView.getMenu().removeItem(R.id.action_oversease_black_box);
   }
 }

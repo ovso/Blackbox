@@ -2,6 +2,7 @@ package io.github.ovso.blackbox.utils;
 
 import android.content.Context;
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.android.gms.ads.MobileAds;
 import io.fabric.sdk.android.Fabric;
 import io.github.ovso.blackbox.BuildConfig;
@@ -14,14 +15,9 @@ public class AppInitUtils {
 
   }
 
-  public static void crashlytics(Context context, boolean debug) {
-    if (!debug) {
-      final Fabric fabric = new Fabric.Builder(context)
-          .kits(new Crashlytics())
-          .debuggable(true)           // Enables Crashlytics debugger
-          .build();
-      Fabric.with(fabric);
-    }
+  public static void crashlytics(Context context) {
+    CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(!BuildConfig.DEBUG).build();
+    Fabric.with(context, new Crashlytics.Builder().core(core).build());
   }
 
   public static void timer() {

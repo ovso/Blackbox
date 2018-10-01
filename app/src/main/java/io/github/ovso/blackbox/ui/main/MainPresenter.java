@@ -36,5 +36,7 @@ public interface MainPresenter {
     void changeTheme();
 
     void removeBottomNavMenu();
+
+    void showOverSeas(NavMenu menu);
   }
 }

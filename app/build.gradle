@@ -51,12 +51,11 @@ android {
   buildTypes {
     release {
       signingConfig signingConfigs.release
-      minifyEnabled false
+      minifyEnabled true
       shrinkResources false
-      useProguard false
+      useProguard true
       proguardFile getDefaultProguardFile('proguard-android.txt')
       proguardFile 'proguard-rules.pro'
-      proguardFile 'proguard-tedpermission.pro'
       proguardFile 'proguard-firebase.pro'
       proguardFile 'proguard-butterknipe.pro'
       proguardFile 'proguard-glide.pro'
@@ -64,17 +63,6 @@ android {
       proguardFile 'proguard-dagger.pro'
     }
     debug {
-      minifyEnabled false
-      shrinkResources false
-      useProguard false
-      proguardFile getDefaultProguardFile('proguard-android.txt')
-      proguardFile 'proguard-rules.pro'
-      proguardFile 'proguard-tedpermission.pro'
-      proguardFile 'proguard-firebase.pro'
-      proguardFile 'proguard-butterknipe.pro'
-      proguardFile 'proguard-guava.pro'
-      proguardFile 'proguard-glide.pro'
-      proguardFile 'proguard-dagger.pro'
     }
   }
 
@@ -101,6 +89,8 @@ dependencies {
 
   implementation files('libs/YouTubeAndroidPlayerApi.jar')
   implementation "com.android.support:appcompat-v7:$support_version"
+  implementation "com.android.support:support-v4:$support_version"
+  implementation "com.android.support:support-media-compat:$support_version"
   implementation "com.android.support:design:$support_version"
   implementation "com.android.support:customtabs:$support_version"
   implementation "com.android.support.constraint:constraint-layout:$constraint_version"
