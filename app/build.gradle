@@ -52,15 +52,15 @@ android {
     release {
       signingConfig signingConfigs.release
       minifyEnabled true
-      shrinkResources false
+      shrinkResources true
       useProguard true
-      proguardFile getDefaultProguardFile('proguard-android.txt')
-      proguardFile 'proguard-rules.pro'
-      proguardFile 'proguard-firebase.pro'
       proguardFile 'proguard-butterknipe.pro'
       proguardFile 'proguard-glide.pro'
       proguardFile 'proguard-retrofit.pro'
       proguardFile 'proguard-dagger.pro'
+      proguardFile 'proguard-okhttp3.pro'
+      proguardFile 'proguard-gson.pro'
+      proguardFile 'proguard-firebase.pro'
     }
     debug {
     }
