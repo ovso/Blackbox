@@ -10,7 +10,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.DaggerAppCompatActivity;
 import io.github.ovso.blackbox.R;
-import io.github.ovso.blackbox.main.base.view.MyAdView;
 
 public abstract class BaseActivity extends DaggerAppCompatActivity {
   protected @BindView(R.id.toolbar) Toolbar toolbar;

@@ -1,4 +1,4 @@
-package io.github.ovso.blackbox.youtube;
+package io.github.ovso.blackbox.ui.youtube;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 import io.github.ovso.blackbox.R;
 import io.github.ovso.blackbox.Security;
-import io.github.ovso.blackbox.main.base.view.AdsActivity;
+import io.github.ovso.blackbox.ui.base.view.AdsActivity;
 
 public class LandscapeVideoActivity extends AdsActivity {
 

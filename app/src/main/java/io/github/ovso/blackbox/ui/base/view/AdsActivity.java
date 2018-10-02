@@ -1,4 +1,4 @@
-package io.github.ovso.blackbox.main.base.view;
+package io.github.ovso.blackbox.ui.base.view;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -9,7 +9,11 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-
+  bundle {
+    density.enableSplit = true
+    abi.enableSplit = true
+    language.enableSplit = true
+  }
   signingConfigs {
     release {
       keyAlias keystoreProperties['keyAlias']
@@ -51,16 +55,27 @@ android {
   buildTypes {
     release {
       signingConfig signingConfigs.release
-      minifyEnabled true
-      shrinkResources true
-      useProguard true
+      minifyEnabled false
+      shrinkResources false
+      useProguard false
       proguardFile 'proguard-butterknipe.pro'
       proguardFile 'proguard-glide.pro'
-      proguardFile 'proguard-retrofit.pro'
+      proguardFile 'proguard-retrofit2.pro'
       proguardFile 'proguard-dagger.pro'
       proguardFile 'proguard-okhttp3.pro'
       proguardFile 'proguard-gson.pro'
       proguardFile 'proguard-firebase.pro'
+      proguardFile 'proguard-android-support.pro'
+      proguardFile 'proguard-others.pro'
+
+      android.applicationVariants.all { variant ->
+        variant.outputs.all {
+          def formattedDate = new Date().format('yyyyMMddHHmmss')
+          def appName = variant.getApplicationId().split(/[.]/)[3]
+          outputFileName =
+              "${appName}-${variant.name}-${variant.versionCode}-${variant.versionName}-${formattedDate}.apk"
+        }
+      }
     }
     debug {
     }
