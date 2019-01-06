@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'hugo'
 apply plugin: 'io.fabric'
 
@@ -94,6 +96,10 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
     sourceCompatibility JavaVersion.VERSION_1_8
   }
+
+  androidExtensions {
+    experimental = true
+  }
 }
 
 dependencies {
@@ -118,8 +124,8 @@ dependencies {
 
   implementation "com.google.dagger:dagger:$dagger_version"
   implementation "com.google.dagger:dagger-android-support:$dagger_version"
-  annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
-  annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+  kapt "com.google.dagger:dagger-compiler:$dagger_version"
+  kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
   implementation "com.google.code.findbugs:jsr305:$jsr305_version"
   implementation "com.github.bumptech.glide:glide:$glide_version"
