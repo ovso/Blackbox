@@ -18,29 +18,40 @@ import java.util.Locale
 
 class VideoViewHolder private constructor(override val containerView: View?) : RecyclerView.ViewHolder(
     containerView!!
-), Bindable<SearchItem>, LayoutContainer {
+), IBind<SearchItem>, LayoutContainer {
 
   private var data: SearchItem? = null
   var onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener<SearchItem>? = null
 
-  override fun bind(item: SearchItem) {
-    data = item
+  override fun bind(data: SearchItem) {
+    this.data = data
     Glide.with(title_text_view.context)
-        .load(item.snippet?.thumbnails?.medium?.url)
+        .load(getImageUrl())
         .into(thumbnail_image_view)
-    title_text_view.text = item.snippet?.title
+
+    title_text_view.text = data.snippet?.title
 
     val language = Locale.getDefault()
         .language
-    val format: String
-    if (language.equals("ko", ignoreCase = true)) {
-      format = "yyyy년 MM월 dd일 HH시 mm분"
-    } else {
-      format = "yyyy/MM/dd HH:mm"
+    val format: String = getDateFormat(language)
+    date_text_view.text = DateUtils.getDate(data.snippet?.publishedAt!!, format)
+    play_button.setOnClickListener {
+      onRecyclerViewItemClickListener?.onItemClick(
+          itemView, this.data!!, 0
+      )
     }
+  }
 
-    date_text_view.text = DateUtils.getDate(item.snippet?.publishedAt!!, format)
-    play_button.setOnClickListener { onRecyclerViewItemClickListener?.onItemClick(itemView, data!!, 0) }
+  private fun getDateFormat(language: String): String {
+    if (language.equals("ko", ignoreCase = true)) {
+      return "yyyy년 MM월 dd일 HH시 mm분"
+    } else {
+      return "yyyy/MM/dd HH:mm"
+    }
+  }
+
+  private fun getImageUrl(): Any? {
+    return data?.snippet?.thumbnails?.medium?.url
   }
 
   companion object {

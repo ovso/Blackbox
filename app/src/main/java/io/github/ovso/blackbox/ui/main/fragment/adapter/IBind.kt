@@ -1,5 +1,5 @@
 package io.github.ovso.blackbox.ui.main.fragment.adapter
 
-interface Bindable<T> {
+interface IBind<T> {
   fun bind(data: T)
 }
