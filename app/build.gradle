@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'hugo'
 apply plugin: 'io.fabric'
 
@@ -94,6 +96,10 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
     sourceCompatibility JavaVersion.VERSION_1_8
   }
+
+  androidExtensions {
+    experimental = true
+  }
 }
 
 dependencies {
@@ -118,13 +124,11 @@ dependencies {
 
   implementation "com.google.dagger:dagger:$dagger_version"
   implementation "com.google.dagger:dagger-android-support:$dagger_version"
-  annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
-  annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+  kapt "com.google.dagger:dagger-compiler:$dagger_version"
+  kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
   implementation "com.google.code.findbugs:jsr305:$jsr305_version"
   implementation "com.github.bumptech.glide:glide:$glide_version"
-
-
 
   implementation "com.jakewharton:butterknife:$butterknife_version"
   annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
@@ -132,6 +136,7 @@ dependencies {
   implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
   implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
   implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding2_version"
+  implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
   implementation "com.jakewharton.timber:timber:$timber_version"
 
@@ -147,7 +152,7 @@ dependencies {
   implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
   implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
   implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
-  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 // ADD THIS AT THE BOTTOM
