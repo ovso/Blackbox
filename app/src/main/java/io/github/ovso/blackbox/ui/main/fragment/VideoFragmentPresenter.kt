@@ -22,8 +22,6 @@ interface VideoFragmentPresenter {
 
     fun refresh()
 
-    fun showVideoTypeDialog(onClickListener: DialogInterface.OnClickListener)
-
     fun showPortraitVideo(videoId: String)
 
     fun showLandscapeVideo(videoId: String)

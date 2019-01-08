@@ -2,7 +2,6 @@ package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.KeyName
 import io.github.ovso.blackbox.data.NavMenu
@@ -11,7 +10,6 @@ import io.github.ovso.blackbox.ui.main.fragment.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
 import kotlinx.android.synthetic.main.activity_main.navigation_view
 import kotlinx.android.synthetic.main.app_bar_main.bottom_navigation_view
-import kotlinx.android.synthetic.main.app_bar_main.toolbar
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainPresenter.View {
@@ -26,10 +24,10 @@ class MainActivity : BaseActivity(), MainPresenter.View {
   }
 
   override fun setListener() {
-    val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbar, R.string.navigation_drawer_open,
-        R.string.navigation_drawer_close
-    )
+//    val toggle = ActionBarDrawerToggle(
+//        this, drawer_layout, toolbar, R.string.navigation_drawer_open,
+//        R.string.navigation_drawer_close
+//    )
     //drawer.addDrawerListener(toggle);
     //toggle.syncState();
     navigation_view.setNavigationItemSelectedListener { item ->

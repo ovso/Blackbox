@@ -60,18 +60,6 @@ class VideoFragment : BaseFragment(),
     adapterView!!.refresh()
   }
 
-  override fun showVideoTypeDialog(onClickListener: DialogInterface.OnClickListener) {
-    AlertDialog.Builder(context)
-        .setMessage(R.string.please_select_the_player_mode)
-        .setPositiveButton(
-            R.string.portrait_mode,
-            onClickListener
-        )
-        .setNeutralButton(R.string.landscape_mode, onClickListener)
-        .setNegativeButton(android.R.string.cancel, onClickListener)
-        .show()
-  }
-
   override fun showPortraitVideo(videoId: String) {
     val intent = Intent(context, PortraitVideoActivity::class.java)
     intent.putExtra("video_id", videoId)

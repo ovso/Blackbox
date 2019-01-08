@@ -1,18 +1,20 @@
 package io.github.ovso.blackbox.ui.main.fragment
 
 import android.content.ActivityNotFoundException
-import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
 import android.text.TextUtils
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.KeyName
-import io.github.ovso.blackbox.data.VideoMode
 import io.github.ovso.blackbox.data.network.SearchRequest
+import io.github.ovso.blackbox.data.network.model.Search
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel
 import io.github.ovso.blackbox.utils.ResourceProvider
 import io.github.ovso.blackbox.utils.SchedulersFacade
+import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 class VideoFragmentPresenterImpl(
@@ -44,19 +46,29 @@ class VideoFragmentPresenterImpl(
     position = args.getInt(KeyName.POSITION.get())
     view.changeTitle(title)
     q = resourceProvider.getStringArray(R.array.q)[position]
-    val disposable = searchRequest.getResult(q!!, nextPageToken)
+    searchRequest.getResult(q!!, nextPageToken)
         .subscribeOn(schedulersFacade.io())
         .observeOn(schedulersFacade.ui())
-        .subscribe(
-            { search ->
-              nextPageToken = search.nextPageToken
-              val items = search.items
-              adapterDataModel.addAll(items!!)
-              view.refresh()
-              view.setLoaded()
-              view.hideLoading()
-            }, { throwable -> view.hideLoading() })
-    compositeDisposable.add(disposable)
+        .subscribe(object : SingleObserver<Search> {
+          override fun onSuccess(t: Search) {
+            nextPageToken = t.nextPageToken
+            val items = t.items
+            adapterDataModel.addAll(items!!)
+            view.refresh()
+            view.setLoaded()
+            view.hideLoading()
+          }
+
+          override fun onSubscribe(d: Disposable) {
+            compositeDisposable.add(d)
+          }
+
+          override fun onError(e: Throwable) {
+            Timber.e(e)
+            view.hideLoading()
+          }
+
+        })
   }
 
   override fun onDestroyView() {
@@ -64,24 +76,13 @@ class VideoFragmentPresenterImpl(
   }
 
   override fun onItemClick(data: SearchItem) {
-    val onClickListener = OnClickListener { dialog, which ->
-      dialog.dismiss()
-
-      try {
-        dialog.dismiss()
-        val videoId = data.id!!.videoId
-        when (VideoMode.toMode(which)) {
-          VideoMode.PORTRAIT -> view.showPortraitVideo(videoId!!)
-          VideoMode.LANDSCAPE -> view.showLandscapeVideo(videoId!!)
-          VideoMode.CANCEL -> {
-          }
-        }
-      } catch (e: ActivityNotFoundException) {
-        e.printStackTrace()
-        view.showYoutubeUseWarningDialog()
-      }
+    val videoId = data.id!!.videoId
+    try {
+      view.showPortraitVideo(videoId!!)
+    } catch (e: ActivityNotFoundException) {
+      Timber.e(e);
+      view.showYoutubeUseWarningDialog()
     }
-    view.showVideoTypeDialog(onClickListener)
   }
 
   override fun onLoadMore() {
@@ -123,8 +124,4 @@ class VideoFragmentPresenterImpl(
         })
     compositeDisposable.add(disposable)
   }
-
-  //private <E> void shuffle(List<E> $items) {
-  //  Collections.shuffle($items);
-  //}
 }
