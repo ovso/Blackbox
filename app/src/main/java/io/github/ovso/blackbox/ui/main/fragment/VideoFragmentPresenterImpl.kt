@@ -14,7 +14,6 @@ import io.github.ovso.blackbox.utils.SchedulersFacade
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 class VideoFragmentPresenterImpl(
@@ -23,7 +22,7 @@ class VideoFragmentPresenterImpl(
   private val resourceProvider: ResourceProvider,
   private val schedulersFacade: SchedulersFacade,
   private val adapterDataModel: VideoAdapterDataModel<SearchItem>
-) : io.github.ovso.blackbox.ui.main.fragment.VideoFragmentPresenter {
+) : VideoFragmentPresenter {
 
   private val compositeDisposable = CompositeDisposable()
   private var nextPageToken: String? = null
@@ -46,29 +45,33 @@ class VideoFragmentPresenterImpl(
     position = args.getInt(KeyName.POSITION.get())
     view.changeTitle(title)
     q = resourceProvider.getStringArray(R.array.q)[position]
+    reqVideo()
+  }
+
+  private fun reqVideo() {
     searchRequest.getResult(q!!, nextPageToken)
-        .subscribeOn(schedulersFacade.io())
-        .observeOn(schedulersFacade.ui())
-        .subscribe(object : SingleObserver<Search> {
-          override fun onSuccess(t: Search) {
-            nextPageToken = t.nextPageToken
-            val items = t.items
-            adapterDataModel.addAll(items!!)
-            view.refresh()
-            view.setLoaded()
-            view.hideLoading()
-          }
+      .subscribeOn(schedulersFacade.io())
+      .observeOn(schedulersFacade.ui())
+      .subscribe(object : SingleObserver<Search> {
+        override fun onSuccess(t: Search) {
+          nextPageToken = t.nextPageToken
+          val items = t.items
+          adapterDataModel.addAll(items!!)
+          view.refresh()
+          view.setLoaded()
+          view.hideLoading()
+        }
 
-          override fun onSubscribe(d: Disposable) {
-            compositeDisposable.add(d)
-          }
+        override fun onSubscribe(d: Disposable) {
+          compositeDisposable.add(d)
+        }
 
-          override fun onError(e: Throwable) {
-            Timber.e(e)
-            view.hideLoading()
-          }
+        override fun onError(e: Throwable) {
+          Timber.e(e)
+          view.hideLoading()
+        }
 
-        })
+      })
   }
 
   override fun onDestroyView() {
@@ -80,7 +83,7 @@ class VideoFragmentPresenterImpl(
     try {
       view.showPortraitVideo(videoId!!)
     } catch (e: ActivityNotFoundException) {
-      Timber.e(e);
+      Timber.e(e)
       view.showYoutubeUseWarningDialog()
     }
   }
@@ -88,16 +91,16 @@ class VideoFragmentPresenterImpl(
   override fun onLoadMore() {
     if (!TextUtils.isEmpty(nextPageToken) && !TextUtils.isEmpty(q)) {
       val disposable = searchRequest.getResult(q!!, nextPageToken)
-          .subscribeOn(schedulersFacade.io())
-          .observeOn(schedulersFacade.ui())
-          .subscribe(
-              { search ->
-                nextPageToken = search.nextPageToken
-                val items = search.items
-                adapterDataModel.addAll(items!!)
-                view.refresh()
-                view.setLoaded()
-              }, { throwable -> Timber.d(throwable) })
+        .subscribeOn(schedulersFacade.io())
+        .observeOn(schedulersFacade.ui())
+        .subscribe(
+          { search ->
+            nextPageToken = search.nextPageToken
+            val items = search.items
+            adapterDataModel.addAll(items!!)
+            view.refresh()
+            view.setLoaded()
+          }, { throwable -> Timber.d(throwable) })
       compositeDisposable.add(disposable)
     }
   }
@@ -108,20 +111,20 @@ class VideoFragmentPresenterImpl(
     nextPageToken = null
     q = resourceProvider.getStringArray(R.array.q)[position]
     val disposable = searchRequest.getResult(q!!, nextPageToken)
-        .subscribeOn(schedulersFacade.io())
-        .observeOn(schedulersFacade.ui())
-        .subscribe(
-            { search ->
-              nextPageToken = search.nextPageToken
-              val items = search.items
-              adapterDataModel.addAll(items!!)
-              view.refresh()
-              view.setLoaded()
-              view.hideLoading()
-            }, { throwable ->
-          Timber.d(throwable)
+      .subscribeOn(schedulersFacade.io())
+      .observeOn(schedulersFacade.ui())
+      .subscribe(
+        { search ->
+          nextPageToken = search.nextPageToken
+          val items = search.items
+          adapterDataModel.addAll(items!!)
+          view.refresh()
+          view.setLoaded()
           view.hideLoading()
-        })
+        }, { throwable ->
+        Timber.d(throwable)
+        view.hideLoading()
+      })
     compositeDisposable.add(disposable)
   }
 }
