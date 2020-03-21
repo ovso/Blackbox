@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'hugo'
 apply plugin: 'io.fabric'
+apply from: '../scripts/ktlint.gradle'
 
 def keystorePropertiesFile = rootProject.file("../../workspace_side/jks/blackbox_keystore.properties")
 def keystoreProperties = new Properties()
