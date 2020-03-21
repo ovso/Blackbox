@@ -41,7 +41,6 @@ class VideoFragmentPresenterImpl(
   override fun onActivityCreated(args: Bundle) {
     view.setupRecyclerView()
     view.setupSwipeRefresh()
-    view.showLoading()
     position = args.getInt(KeyName.POSITION.get())
     view.changeTitle(title)
     q = resourceProvider.getStringArray(R.array.q)[position]
@@ -49,6 +48,7 @@ class VideoFragmentPresenterImpl(
   }
 
   private fun reqVideo() {
+    view.showLoading()
     searchRequest.getResult(q!!, nextPageToken)
       .subscribeOn(schedulersFacade.io())
       .observeOn(schedulersFacade.ui())
