@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'hugo'
 apply plugin: 'io.fabric'
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystorePropertiesFile = rootProject.file("../../workspace_side/jks/blackbox_keystore.properties")
 // Initialize a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
 // Load your keystore.properties file into the keystoreProperties object.

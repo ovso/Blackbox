@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "102392740842",
+    "firebase_url": "https://blackbox-b020e.firebaseio.com",
+    "project_id": "blackbox-b020e",
+    "storage_bucket": "blackbox-b020e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102392740842:android:29eec18574d4c970",
+        "android_client_info": {
+          "package_name": "io.github.ovso.blackbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102392740842-8195jbfu7ebro0iod2g8bsq5699vhs9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDLaOfDQXVO52Wctmlqo7jy1GEkGV5SnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102392740842-8195jbfu7ebro0iod2g8bsq5699vhs9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-8679189423397017~6001151702"
+    }
+  ],
+  "configuration_version": "1"
+}

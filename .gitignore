@@ -1,4 +1,5 @@
-keystore.properties
-/app/src/main/java/io/github/ovso/blackbox/Security.java
 .idea
-google-services.json
+.gradle
+build
+*.iml
+
