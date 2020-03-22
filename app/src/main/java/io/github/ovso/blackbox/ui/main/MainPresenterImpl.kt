@@ -1,7 +1,7 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
-import android.support.annotation.IdRes
+import androidx.annotation.IdRes
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.NavMenu
 import io.reactivex.disposables.CompositeDisposable

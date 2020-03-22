@@ -5,21 +5,11 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.support.annotation.AnimRes
-import android.support.annotation.ArrayRes
-import android.support.annotation.BoolRes
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
-import android.support.annotation.DimenRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.FontRes
-import android.support.annotation.IntegerRes
-import android.support.annotation.PluralsRes
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.res.ResourcesCompat
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.annotation.*
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import javax.inject.Inject
 
 class ResourceProvider @Inject

@@ -1,7 +1,8 @@
 package io.github.ovso.blackbox.ui.base.interfaces
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 
 class OnEndlessRecyclerScrollListener internal constructor(builder: OnEndlessRecyclerScrollListener.Builder) :
     RecyclerView.OnScrollListener() {

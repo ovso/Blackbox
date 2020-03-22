@@ -1,6 +1,7 @@
 package io.github.ovso.blackbox.main.base.interfaces
 
-import android.support.design.widget.TabLayout
+import com.google.android.material.tabs.TabLayout
+
 
 abstract class SimpleOnTabSelectedListener : TabLayout.OnTabSelectedListener {
 

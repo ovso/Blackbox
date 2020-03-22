@@ -3,12 +3,12 @@ package io.github.ovso.blackbox.ui.main.fragment
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
-import io.github.ovso.blackbox.main.base.view.BaseFragment
+import io.github.ovso.blackbox.ui.base.view.BaseFragment
 import io.github.ovso.blackbox.ui.base.interfaces.OnEndlessRecyclerScrollListener
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapter

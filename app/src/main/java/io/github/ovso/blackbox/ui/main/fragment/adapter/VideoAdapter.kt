@@ -1,7 +1,7 @@
 package io.github.ovso.blackbox.ui.main.fragment.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener
 import java.util.ArrayList

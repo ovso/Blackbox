@@ -1,8 +1,8 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
-import android.support.annotation.IdRes
-import android.support.annotation.StringRes
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import io.github.ovso.blackbox.data.NavMenu
 
 interface MainPresenter {

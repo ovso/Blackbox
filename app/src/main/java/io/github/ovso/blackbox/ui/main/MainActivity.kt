@@ -1,7 +1,7 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
-import android.support.v4.view.GravityCompat
+import androidx.core.view.GravityCompat
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.KeyName
 import io.github.ovso.blackbox.data.NavMenu

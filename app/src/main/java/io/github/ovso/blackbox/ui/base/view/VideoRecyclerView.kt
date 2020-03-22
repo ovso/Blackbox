@@ -1,8 +1,8 @@
 package io.github.ovso.blackbox.ui.base.view
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import androidx.recyclerview.widget.RecyclerView
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.base.interfaces.OnEndlessRecyclerScrollListener
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener
