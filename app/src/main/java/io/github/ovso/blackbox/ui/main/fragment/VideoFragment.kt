@@ -88,11 +88,17 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun hideLoading() {
-    swipe_refresh_layout.isRefreshing = false
+    with(swipe_refresh_layout) {
+      isEnabled = false
+      isRefreshing = false
+    }
   }
 
   override fun showLoading() {
-    swipe_refresh_layout.isRefreshing = true
+    with(swipe_refresh_layout) {
+      isEnabled = true
+      isRefreshing = true
+    }
   }
 
   override fun changeTitle(title: CharSequence) {
