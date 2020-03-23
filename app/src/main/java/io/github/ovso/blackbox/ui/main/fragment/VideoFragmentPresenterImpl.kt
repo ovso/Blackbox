@@ -44,7 +44,7 @@ class VideoFragmentPresenterImpl(
     position = args.getInt(KeyName.POSITION.get())
     view.changeTitle(title)
     q = resourceProvider.getStringArray(R.array.q)[position]
-    //reqVideo()
+    reqVideo()
   }
 
   private fun reqVideo() {

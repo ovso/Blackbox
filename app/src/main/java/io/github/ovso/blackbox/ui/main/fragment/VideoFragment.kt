@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ovso.blackbox.R
@@ -20,9 +21,9 @@ import kotlinx.android.synthetic.main.fragment_video.swipe_refresh_layout
 import javax.inject.Inject
 
 class VideoFragment : BaseFragment(),
-    VideoFragmentPresenter.View,
-    OnRecyclerViewItemClickListener<SearchItem>,
-    OnEndlessRecyclerScrollListener.OnLoadMoreListener {
+  VideoFragmentPresenter.View,
+  OnRecyclerViewItemClickListener<SearchItem>,
+  OnEndlessRecyclerScrollListener.OnLoadMoreListener {
   override fun onActivityCreate(savedInstanceState: Bundle?) {
     presenter!!.onActivityCreated(arguments!!)
   }
@@ -46,11 +47,11 @@ class VideoFragment : BaseFragment(),
     recycler_view.layoutManager = LinearLayoutManager(context)
     recycler_view.setOnItemClickListener(this)
     recycler_view.addOnScrollListener(
-        OnEndlessRecyclerScrollListener.Builder()
-            .setVisibleThreshold(20)
-            .setLinearLayoutManager(recycler_view.layoutManager as LinearLayoutManager)
-            .setOnLoadMoreListener(this)
-            .build()
+      OnEndlessRecyclerScrollListener.Builder()
+        .setVisibleThreshold(20)
+        .setLinearLayoutManager(recycler_view.layoutManager as LinearLayoutManager)
+        .setOnLoadMoreListener(this)
+        .build()
     )
     recycler_view.adapter = adapter
   }
@@ -73,9 +74,9 @@ class VideoFragment : BaseFragment(),
 
   override fun showYoutubeUseWarningDialog() {
     AlertDialog.Builder(activity)
-        .setMessage(R.string.youtube_use_warning)
-        .setPositiveButton(android.R.string.ok, null)
-        .show()
+      .setMessage(R.string.youtube_use_warning)
+      .setPositiveButton(android.R.string.ok, null)
+      .show()
   }
 
   override fun setLoaded() {
@@ -115,6 +116,12 @@ class VideoFragment : BaseFragment(),
     fun newInstance(args: Bundle): Fragment {
       val f = VideoFragment()
       f.arguments = args
+      return f
+    }
+
+    fun newInstance2(position: Int): Fragment {
+      val f = VideoFragment()
+      f.arguments = bundleOf("position" to position)
       return f
     }
   }
