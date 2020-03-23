@@ -1,6 +1,5 @@
 package io.github.ovso.blackbox
 
-import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import io.github.ovso.blackbox.di.DaggerAppComponent
@@ -17,12 +16,7 @@ class App : DaggerApplication() {
 
   override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
     return DaggerAppComponent.builder()
-        .application(this)
-        .build()
-  }
-
-  companion object {
-    var instance: Application? = null
-      private set
+      .application(this)
+      .build()
   }
 }
