@@ -1,9 +1,12 @@
 apply plugin: 'com.android.application'
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
 apply plugin: 'kotlin-kapt'
-apply plugin: 'hugo'
-apply plugin: 'io.fabric'
 apply from: '../scripts/ktlint.gradle'
 
 def keystorePropertiesFile = rootProject.file("../../workspace_side/jks/blackbox_keystore.properties")
@@ -24,16 +27,16 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
-    compileSdkVersion rootProject.compile_sdk_version
+    compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId rootProject.application_id
-        minSdkVersion rootProject.min_sdk_version
-        targetSdkVersion rootProject.target_sdk_version
-        versionCode rootProject.version_code
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
 
         int versionMajor = 0
         int versionMinor = 0
-        int versionPatch = rootProject.version_code
+        int versionPatch = config.versionCode
 
         if (1000 > versionPatch && versionPatch > 99) {
             versionMajor = versionPatch / 100
@@ -58,9 +61,10 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+
             minifyEnabled false
             shrinkResources false
-            useProguard false
+
             proguardFile 'proguard-butterknipe.pro'
             proguardFile 'proguard-glide.pro'
             proguardFile 'proguard-retrofit2.pro'
@@ -97,6 +101,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     androidExtensions {
         experimental = true
     }
@@ -104,45 +112,22 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    implementation "androidx.media:media:1.1.0"
-    implementation "com.google.android.material:material:1.1.0"
-    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
-    implementation "androidx.cardview:cardview:1.0.0"
 
-    implementation "com.google.firebase:firebase-ads:19.0.0"
-    implementation "com.google.firebase:firebase-core:17.2.3"
-    implementation "com.crashlytics.sdk.android:crashlytics:2.10.1"
+    implementation deps.androidx.values()
+    implementation deps.firebase.values()
 
-    implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    api deps.dagger.values()
+    kapt deps.dagger_compiler.values()
 
-    implementation "com.google.code.findbugs:jsr305:$jsr305_version"
-    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation deps.glide.runtime
+    implementation deps.rx.values()
+    implementation deps.timber
+    implementation deps.retrofit.values()
+    implementation deps.okhttp.values()
+    implementation deps.kotlin.values()
 
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding2_version"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
-
-    implementation "com.jakewharton.timber:timber:$timber_version"
-
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
-
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    androidTestImplementation 'junit:junit:4.12'
+    testImplementation deps.tsl.values()
+    androidTestImplementation deps.atsl.values()
 }
-
-// ADD THIS AT THE BOTTOM
-apply plugin: 'com.google.gms.google-services'

@@ -1,156 +1,265 @@
-ext.deps = [:]
-def versions = [:]
-versions.room = "2.2.4"
-versions.junit = '4.12'
-versions.runner = '1.0.2'
-versions.espressocore = '3.1.0'
-versions.appcompat = '1.1.0'
-versions.lifecycle = "2.0.0"
-versions.support = "28.0.0"
-versions.dagger = "2.26"
-versions.espresso = "3.1.0"
-versions.retrofit = "2.7.2"
-versions.okhttp = "3.12.0"
-versions.constraintlayout = "1.1.3"
-versions.glide = "4.9.0"
-versions.timber = "4.7.1"
-versions.rxjava2 = "2.2.18"
-versions.rxkotlin2 = '2.4.0'
-versions.rxandroid = "2.1.1"
-versions.easyprefs = '1.9.0'
-versions.material = '1.0.0'
-versions.lottie = '3.4.0'
-versions.viewpager2 = '1.0.0'
-versions.paging = '2.1.0'
-versions.easydeviceinfo = '2.4.1'
-versions.android_gradle = '3.6.1'
-versions.kotlin = '1.3.70'
-versions.core_ktx = '1.2.0'
-versions.lifecycle_viewmodel_ktx = '2.2.0'
-versions.lifecycle_extensions = '2.2.0'
-versions.annotation = '1.1.0'
-versions.legacy_preference_v14 = '1.0.0'
-versions.licensedialog = '2.0.0'
-versions.easyprefs = '1.9.0'
-versions.firebase_ads = '19.0.0'
-versions.google_service = '4.3.3'
-versions.rssparser = '2.1.2'
-versions.jsoup = '1.11.3'
-versions.coroutines = '1.3.4'
-versions.fragment = '1.2.2'
-versions.activity = '1.1.0'
-versions.koltin_reflect = '1.3.70'
-def deps = [:]
+ext {
+    versions = [
+            'room'                 : '2.0.0',
+            'junit'                : '4.12',
+            'runner'               : '1.2.0',
+            'rules'                : '1.2.0',
+            'espresso'             : '3.1.0',
+            'work_testing'         : '2.2.0',
+            'appcompat'            : '1.1.0',
+            'lifecycle'            : '2.2.0',
+            'dagger'               : '2.26',
+            'retrofit'             : '2.7.2',
+            'okhttp'               : '4.4.1',
+            'constraintlayout'     : '1.1.3',
+            'glide'                : '4.9.0',
+            'timber'               : '4.7.1',
+            'rxjava2'              : '2.2.11',
+            'rxandroid2'           : '2.1.1',
+            'rxjava3'              : '3.0.0-RC6',
+            'rxandroid3'           : '3.0.0-SNAPSHOT',
+            'rxkotlin'             : '2.4.0',
+            'material'             : '1.1.0-alpha10',
+            'lottie'               : '3.0.2',
+            'viewpager2'           : '1.0.0-alpha04',
+            'paging'               : '2.1.0',
+            'easydeviceinfo'       : '2.4.1',
+            'android_gradle'       : '3.5.2',
+            'kotlin'               : '1.3.40',
+            'core_ktx'             : '1.1.0',
+            'annotation'           : '1.0.2',
+            'legacy_preference_v14': '1.0.0',
+            'legacy_support_v4'    : '1.0.0',
+            'licensedialog'        : '2.1.0',
+            'firebase_ads'         : '19.0.0',
+            'firebase_core'        : '17.2.3',
+            'crashlytics'          : '2.10.1',
+            'google_service'       : '4.3.3',
+            'rssparser'            : '2.0.3',
+            'jsoup'                : '1.11.3',
+            'coroutines'           : '1.2.0',
+            'fragment'             : '1.0.0',
+            'anko'                 : '0.10.8',
+            'threetenabp'          : '1.2.1',
+            'koin'                 : '2.0.1',
+            'autodispose'          : '1.4.0',
+            'picasso'              : '2.71828',
+            'fresco'               : '2.0.0',
+            'logging_interceptor'  : '4.2.1',
+            'arch_core'            : '2.1.0',
+            'koap'                 : '1.0.1',
+            'youtube_player'       : '10.0.5',
+            'shimmer'              : '0.5.0',
+            'shimmer_layout'       : '2.1.0'
+    ]
 
-def androidx = [:]
-androidx.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
-androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
-androidx.material = "com.google.android.material:material:$versions.material"
-androidx.viewpager2 = "androidx.viewpager2:viewpager2:$versions.viewpager2"
-androidx.paging_runtime = "androidx.paging:paging-runtime:$versions.paging"
-androidx.paging_rxjava2 = "androidx.paging:paging-rxjava2:$versions.paging"
-androidx.annotation = "androidx.annotation:annotation:$versions.annotation"
-androidx.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
-androidx.lifecycle_viewmodel_ktx =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_viewmodel_ktx"
-androidx.lifecycle_extensions =
-        "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions"
-androidx.legacy_preference_v14 =
-        "androidx.legacy:legacy-preference-v14:$versions.legacy_preference_v14"
-androidx.fragment = "androidx.fragment:fragment:$versions.fragment"
-androidx.fragment_ktx = "androidx.fragment:fragment-ktx:$versions.fragment"
-androidx.activity = "androidx.activity:activity:$versions.activity"
-androidx.activity_ktx = "androidx.activity:activity-ktx:$versions.activity"
-deps.androidx = androidx
+    deps = [
+            'androidx'       : [
+                    'appcompat'              : "androidx.appcompat:appcompat:$versions.appcompat",
+                    'constraintlayout'       : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+                    'material'               : "com.google.android.material:material:$versions.material",
+                    'viewpager2'             : "androidx.viewpager2:viewpager2:$versions.viewpager2",
+                    'paging_runtime'         : "androidx.paging:paging-runtime:$versions.paging",
+                    'paging_rxjava2'         : "androidx.paging:paging-rxjava2:$versions.paging",
+                    'annotation'             : "androidx.annotation:annotation:$versions.annotation",
+                    'core_ktx'               : "androidx.core:core-ktx:$versions.core_ktx",
+                    'lifecycle_viewmodel_ktx': "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+                    'lifecycle_extensions'   : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+                    'legacy_preference_v14'  : "androidx.legacy:legacy-preference-v14:$versions.legacy_preference_v14",
+                    'fragment'               : "androidx.fragment:fragment:$versions.fragment",
+                    'legacy_support_v4'      : "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4",
+            ],
 
-def jetbrains = [:]
-jetbrains.kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:$versions.koltin_reflect"
-deps.jetbrains = jetbrains
+            'anko'           : [
+                    'commons': "org.jetbrains.anko:anko-commons:$versions.anko",
+                    //                    'sdk25'                  : "org.jetbrains.anko:anko-sdk25:$versions.anko",
+                    //                    'appcompat'              : "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
+                    //                    'sqlite'                 : "org.jetbrains.anko:anko-sqlite:$versions.anko",
+                    //                    'sdk25_coroutines'       : "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
+                    //                    'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
 
-def firebase = [:]
-firebase.ads = "com.google.firebase:firebase-ads:$versions.firebase_ads"
-deps.firebase = firebase
+            ],
 
-def atsl = [:]
-atsl.junit = "junit:junit:$versions.junit"
-atsl.runner = "androidx.test:runner:$versions.runner"
-atsl.espressocore = "androidx.test.espresso:espresso-core:$versions.espressocore"
-deps.atsl = atsl
+            'kotlin'         : [
+                    'reflect'    : "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin",
+                    'stdlib_jdk8': "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
 
-def dagger = [:]
-dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
-dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
-dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
-dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
-dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
-deps.dagger = dagger
+            ],
 
-def butterknife = [:]
-butterknife.runtime = "com.jakewharton:butterknife:$versions.butterknife"
-butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
-deps.butterknife = butterknife
 
-def lombok = [:]
-lombok.runtime = "org.projectlombok:lombok:$versions.lombok"
-lombok.compiler = "org.projectlombok:lombok:$versions.lombok"
-deps.lombok = lombok
+            'coroutines'     : [
+                    'core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+                    'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+            ],
 
-def retrofit = [:]
-retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
-retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
-retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
-deps.retrofit = retrofit
 
-def okhttp = [:]
-okhttp.runtime = "com.squareup.okhttp3:okhttp:$versions.okhttp"
-okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
-deps.okhttp = okhttp
+            'firebase'       : [
+                    'ads'       : "com.google.firebase:firebase-ads:$versions.firebase_ads",
+                    'analytics' : "com.google.firebase:firebase-analytics:17.2.3",
+                    'craslytics': "com.google.firebase:firebase-crashlytics:17.0.0-beta01"
+            ],
 
-def glide = [:]
-glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
-glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
-deps.glide = glide
 
-def rx = [:]
-rx.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
-rx.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
-rx.rxkotlin2 = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin2"
-deps.rx = rx
+            'tsl'            : [
+                    'junit'                  : "junit:junit:$versions.junit",
+                    'kotlinx_coroutines_test': "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
+                    'mockito_core'           : "org.mockito:mockito-core:2.23.0",
+                    'core_testing'           : "androidx.arch.core:core-testing:$versions.arch_core"
+            ],
 
-def coroutines = [:]
-coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines_core"
-coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines_core"
-deps.coroutines = coroutines
 
-deps.timber = "com.jakewharton.timber:timber:$versions.timber"
-deps.jsr250_api = "javax.annotation:jsr250-api:$versions.jsr250_api"
-deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
-deps.kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
-deps.easydeviceinfo = "com.github.nisrulz:easydeviceinfo:$versions.easydeviceinfo"
-deps.licensedialog = "de.psdev.licensesdialog:licensesdialog:$versions.licensedialog"
-deps.easyprefs = "com.pixplicity.easyprefs:library:$versions.easyprefs"
-deps.rssparser = "com.prof.rssparser:rssparser:$versions.rssparser"
-deps.jsoup = "org.jsoup:jsoup:$versions.jsoup"
+            'atsl'           : [
+                    'junit'           : "junit:junit:$versions.junit",
+                    'runner'          : "androidx.test:runner:$versions.runner",
+                    'rules'           : "androidx.test:rules:$versions.rules",
+                    'espresso_core'   : "androidx.test.espresso:espresso-core:$versions.espresso",
+                    'espresso_contrib': "androidx.test.espresso:espresso-contrib:$versions.espresso",
+                    'espresso_intents': "androidx.test.espresso:espresso-intents:$versions.espresso",
+                    'core_testing'    : "androidx.arch.core:core-testing:$versions.arch_core",
+                    'work_testing'    : "androidx.work:work-testing:$versions.work_testing",
+            ],
 
-ext.deps = deps
 
-def class_path = [:]
-class_path.android_gradle = "com.android.tools.build:gradle:$versions.android_gradle"
-class_path.kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-class_path.google_service = "com.google.gms:google-services:$versions.google_service"
+            'arch_core'      : [
+                    'core_runtime': "androidx.arch.core:core-runtime:$versions.arch_core",
+                    'core_testing': "androidx.arch.core:core-testing:$versions.arch_core"
+            ],
 
-ext.class_path = class_path
 
-def config = [:]
-config.compile_sdk = 28
-config.app_id = 'io.github.ovso.globaltrend'
-config.min_sdk = 21
-config.target_sdk = 28
-config.version_major = 1
-config.version_minor = 1
-config.version_patch = 0
+            'dagger'         : [
+                    'dagger'         : "com.google.dagger:dagger:$versions.dagger",
+                    'android'        : "com.google.dagger:dagger-android:$versions.dagger",
+                    'android_support': "com.google.dagger:dagger-android-support:$versions.dagger"
 
-ext.config = config
+            ],
+            'dagger_compiler': [
+                    'compiler'         : "com.google.dagger:dagger-compiler:$versions.dagger",
+                    'android_processor': "com.google.dagger:dagger-android-processor:$versions.dagger"
+            ],
+
+/*
+'compiler': "com.google.dagger:dagger-compiler:$versions.dagger"
+api 'com.google.dagger:dagger-android:2.x'
+api 'com.google.dagger:dagger-android-support:2.x' // if you use the support libraries
+annotationProcessor 'com.google.dagger:dagger-android-processor:2.x'
+* */
+
+            'koin'           : [
+                    'core'              : "org.koin:koin-core:$versions.koin",
+                    'core_ext'          : "org.koin:koin-core-ext:$versions.koin",
+
+                    'android'           : "org.koin:koin-android:$versions.koin",
+                    'android_scope'     : "org.koin:koin-android-scope:$versions.koin",
+                    'android_viewmodel' : "org.koin:koin-android-viewmodel:$versions.koin",
+                    'android_ext'       : "org.koin:koin-android-ext:$versions.koin",
+
+                    'androidx_scope'    : "org.koin:koin-androidx-scope:$versions.koin",
+                    'androidx_viewmodel': "org.koin:koin-androidx-viewmodel:$versions.koin",
+                    'androidx_fragment' : "org.koin:koin-androidx-fragment:2.1.0-alpha-8",
+                    'androidx_ext'      : "org.koin:koin-androidx-ext:$versions.koin",
+
+                    'ktor'              : "org.koin:koin-ktor:$versions.koin"
+
+            ],
+
+
+            'retrofit'       : [
+                    'runtime': "com.squareup.retrofit2:retrofit:$versions.retrofit",
+                    'gson'   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+                    'rxjava2': "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+                    'rxjava3': "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0-RC6"
+            ],
+
+
+            'okhttp'         : [
+                    'okhttp'             : "com.squareup.okhttp3:okhttp:$versions.okhttp",
+                    'logging_interceptor': "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+            ],
+
+
+            'glide'          : [
+                    'runtime' : "com.github.bumptech.glide:glide:$versions.glide",
+                    'compiler': "com.github.bumptech.glide:compiler:$versions.glide",
+            ],
+
+
+            'fresco'         : "com.facebook.fresco:fresco:$versions.fresco",
+
+
+            'picasso'        : "com.squareup.picasso:picasso:$versions.picasso",
+
+
+            'youtube_player' : "com.pierfrancescosoffritti.androidyoutubeplayer:core:$versions.youtube_player",
+
+
+            'autodispose'    : [
+                    'autodispose'           : "com.uber.autodispose:autodispose:$versions.autodispose",
+                    'lifecycle'             : "com.uber.autodispose:autodispose-lifecycle:$versions.autodispose",
+                    'android'               : "com.uber.autodispose:autodispose-android:$versions.autodispose",
+                    'android_archcomponents': "com.uber.autodispose:autodispose-android-archcomponents:$versions.autodispose",
+                    'rxlifecycle'           : "com.uber.autodispose:autodispose-rxlifecycle:$versions.autodispose",
+                    'rxlifecycle3'          : "com.uber.autodispose:autodispose-rxlifecycle3:$versions.autodispose"
+            ],
+
+
+            'rx'             : [
+                    'rxjava2'   : "io.reactivex.rxjava2:rxjava:$versions.rxjava2",
+                    'rxandroid2': "io.reactivex.rxjava2:rxandroid:$versions.rxandroid2",
+                    'rxjava3'   : "io.reactivex.rxjava3:rxjava:$versions.rxjava3",
+                    'rxandroid3': "io.reactivex.rxjava3:rxandroid:$versions.rxandroid3",
+                    'rxkotlin'  : "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin",
+            ],
+
+
+            'timber'         : "com.jakewharton.timber:timber:$versions.timber",
+
+
+            'lottie'         : "com.airbnb.android:lottie:$versions.lottie",
+
+
+            'easydeviceinfo' : "com.github.nisrulz:easydeviceinfo:$versions.easydeviceinfo",
+
+
+            'licensedialog'  : "de.psdev.licensesdialog:licensesdialog:$versions.licensedialog",
+
+
+            'rssparser'      : "com.prof.rssparser:rssparser:$versions.rssparser",
+
+
+            'jsoup'          : "org.jsoup:jsoup:$versions.jsoup",
+
+
+            'threetenabp'    : "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp",
+
+
+            'koap'           : "com.github.AgustaRC.koap:koap:$versions.koap",
+
+
+            'loading'        : [
+                    'shimmer'       : "com.facebook.shimmer:shimmer:$versions.shimmer",
+                    'shimmer_layout': "io.supercharge:shimmerlayout:$versions.shimmer_layout"
+            ]
+    ]
+
+    classpath = [
+            'android_gradle': "com.android.tools.build:gradle:$versions.android_gradle",
+            'kotlin_gradle' : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+            'google_service': "com.google.gms:google-services:$versions.google_service",
+            'crashlytics'   : "com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta02"
+    ]
+
+    config = [
+            'compileSdkVersion': 29,
+            'applicationId'    : 'io.github.ovso.blackbox',
+            'targetSdkVersion' : 29,
+            'minSdkVersion'    : 21,
+            'versionCode'      : 3,
+//            "versionNameMajor" : 1,
+//            "versionNameMinor" : 0,
+//            "versionNamePatch" : 0,
+//            'versionName'      : '1.0.0',
+    ]
+}
 
 static def addRepos(RepositoryHandler handler) {
     handler.google()
@@ -159,6 +268,8 @@ static def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.maven { url 'https://maven.fabric.io/public' }
     handler.maven { url "https://jitpack.io" }
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url "https://oss.jfrog.org/libs-snapshot" }
 }
 
 ext.addRepos = this.&addRepos

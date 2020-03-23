@@ -9,7 +9,6 @@ class App : DaggerApplication() {
 
   override fun onCreate() {
     super.onCreate()
-    AppInitUtils.crashlytics(this)
     AppInitUtils.timer()
     AppInitUtils.ads(this)
   }
