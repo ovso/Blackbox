@@ -53,7 +53,7 @@ android {
         }
 
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.ext.junit.runners.AndroidJUnit4"
 
         //multiDexEnabled true
     }
