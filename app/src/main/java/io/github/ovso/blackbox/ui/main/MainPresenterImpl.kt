@@ -10,10 +10,9 @@ class MainPresenterImpl internal constructor(
   private val view: MainPresenter.View,
   private val language: String
 ) : MainPresenter {
-  private val compositeDisposable: CompositeDisposable
+  private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
   init {
-    this.compositeDisposable = CompositeDisposable()
     view.changeTheme()
   }
 
@@ -21,7 +20,6 @@ class MainPresenterImpl internal constructor(
     view.setListener()
 
     setupBottomNav()
-    view.showBlackBox(NavMenu.BLACK_BOX)
   }
 
   private fun setupBottomNav() {
@@ -32,21 +30,6 @@ class MainPresenterImpl internal constructor(
 
   override fun onNavItemSelected(itemId: Int): Boolean {
     view.closeDrawer()
-    return true
-  }
-
-  override fun onBottomNavItemSelected(@IdRes itemId: Int, isChecked: Boolean): Boolean {
-    if (!isChecked) {
-      when (itemId) {
-        R.id.action_black_box -> view.showBlackBox(NavMenu.BLACK_BOX)
-        R.id.action_mis_ratio -> view.showMisRatio(NavMenu.MIS_RATIO)
-        R.id.action_copi_with -> view.showCopiWith(NavMenu.COPI_WITH)
-        R.id.action_oversease_black_box -> {
-          view.showCopiWith(NavMenu.COPI_WITH)
-          view.showOverSeas(NavMenu.OVER_SEAS)
-        }
-      }
-    }
     return true
   }
 

@@ -4,12 +4,9 @@ import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import io.github.ovso.blackbox.R
-import io.github.ovso.blackbox.data.KeyName
-import io.github.ovso.blackbox.data.NavMenu
 import io.github.ovso.blackbox.exts.attach
 import io.github.ovso.blackbox.exts.detach
 import io.github.ovso.blackbox.ui.base.view.BaseActivity
-import io.github.ovso.blackbox.ui.main.fragment.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -51,6 +48,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
       }
       true
     }
+    switchFragment(BottomNavPosition.BLACKBOX)
   }
 
   private fun switchFragment(navPosition: BottomNavPosition): Boolean {
@@ -74,52 +72,6 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
   override fun closeDrawer() {
     drawer_layout.closeDrawer(GravityCompat.START)
-  }
-
-  override fun showBlackBox(menu: NavMenu) {
-    supportFragmentManager.beginTransaction()
-      .setCustomAnimations(
-        R.animator.enter_animation, R.animator.exit_animation,
-        R.animator.enter_animation, R.animator.exit_animation
-      )
-      .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
-      .commit()
-  }
-
-  override fun showMisRatio(menu: NavMenu) {
-    supportFragmentManager.beginTransaction()
-      .setCustomAnimations(
-        R.animator.enter_animation, R.animator.exit_animation,
-        R.animator.enter_animation, R.animator.exit_animation
-      )
-      .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
-      .commit()
-  }
-
-  override fun showCopiWith(menu: NavMenu) {
-    supportFragmentManager.beginTransaction()
-      .setCustomAnimations(
-        R.animator.enter_animation, R.animator.exit_animation,
-        R.animator.enter_animation, R.animator.exit_animation
-      )
-      .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
-      .commit()
-  }
-
-  override fun showOverSeas(menu: NavMenu) {
-    supportFragmentManager.beginTransaction()
-      .setCustomAnimations(
-        R.animator.enter_animation, R.animator.exit_animation,
-        R.animator.enter_animation, R.animator.exit_animation
-      )
-      .replace(R.id.fragment_container, VideoFragment.newInstance(createArgs(menu)))
-      .commit()
-  }
-
-  private fun createArgs(menu: NavMenu): Bundle {
-    val args = Bundle()
-    args.putInt(KeyName.POSITION.get(), menu.position)
-    return args
   }
 
   override fun onBackPressed() {
