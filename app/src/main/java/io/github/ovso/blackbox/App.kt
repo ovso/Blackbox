@@ -5,13 +5,11 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import io.github.ovso.blackbox.di.DaggerAppComponent
 import io.github.ovso.blackbox.utils.AppInitUtils
-import lombok.Getter
 
 class App : DaggerApplication() {
 
   override fun onCreate() {
     super.onCreate()
-    instance = this
     AppInitUtils.crashlytics(this)
     AppInitUtils.timer()
     AppInitUtils.ads(this)
@@ -24,7 +22,7 @@ class App : DaggerApplication() {
   }
 
   companion object {
-    @Getter var instance: Application? = null
+    var instance: Application? = null
       private set
   }
 }

@@ -18,6 +18,6 @@ import static org.junit.Assert.assertEquals;
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getTargetContext();
 
-    assertEquals("io.github.ovso.massage", appContext.getPackageName());
+    assertEquals("io.github.ovso.blackbox", appContext.getPackageName());
   }
 }
