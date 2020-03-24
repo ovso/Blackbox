@@ -66,8 +66,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
 
   private fun findFragment(position: BottomNavPosition): Fragment {
-    return supportFragmentManager.findFragmentByTag(position.getTag())
-      ?: position.createFragment()
+    return supportFragmentManager.findFragmentByTag(position.getTag()) ?: position.createFragment()
   }
 
   override fun closeDrawer() {
