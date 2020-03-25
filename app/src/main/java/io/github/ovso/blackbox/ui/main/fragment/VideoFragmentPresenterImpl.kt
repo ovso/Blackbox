@@ -6,6 +6,7 @@ import android.text.TextUtils
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.KeyName
 import io.github.ovso.blackbox.data.network.SearchRequest
+import io.github.ovso.blackbox.data.network.getAdsAddedItem
 import io.github.ovso.blackbox.data.network.model.Search
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel
@@ -56,9 +57,8 @@ class VideoFragmentPresenterImpl(
       .subscribe(object : SingleObserver<Search> {
         override fun onSuccess(t: Search) {
           nextPageToken = t.nextPageToken
-          val items = t.items
-//          searchRequest.getAdsAddedItems(t.items)
-          adapterDataModel.addAll(items!!)
+//          val items = searchRequest.getAdsAddedItem(t.items!!)
+          adapterDataModel.addAll(t.items!!)
           view.refresh()
           view.setLoaded()
           view.hideLoading()
