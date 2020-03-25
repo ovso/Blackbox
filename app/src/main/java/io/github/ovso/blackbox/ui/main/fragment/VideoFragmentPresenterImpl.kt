@@ -57,6 +57,7 @@ class VideoFragmentPresenterImpl(
         override fun onSuccess(t: Search) {
           nextPageToken = t.nextPageToken
           val items = t.items
+//          searchRequest.getAdsAddedItems(t.items)
           adapterDataModel.addAll(items!!)
           view.refresh()
           view.setLoaded()
