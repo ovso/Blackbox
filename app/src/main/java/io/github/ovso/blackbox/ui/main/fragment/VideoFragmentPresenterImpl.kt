@@ -48,6 +48,7 @@ class VideoFragmentPresenterImpl(
   }
 
   private fun reqVideo() {
+    if (adapterDataModel.size > 0) return
     view.showLoading()
     searchRequest.getResult(q!!, nextPageToken)
       .subscribeOn(schedulersFacade.io())
@@ -122,9 +123,9 @@ class VideoFragmentPresenterImpl(
           view.setLoaded()
           view.hideLoading()
         }, { throwable ->
-        Timber.d(throwable)
-        view.hideLoading()
-      })
+          Timber.d(throwable)
+          view.hideLoading()
+        })
     compositeDisposable.add(disposable)
   }
 }
