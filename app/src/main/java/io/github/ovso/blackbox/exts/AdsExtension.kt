@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
+import io.github.ovso.blackbox.Ads
 
 private fun Activity.adaptiveBannerAdSize(): AdSize {
   val display = windowManager.defaultDisplay
@@ -67,4 +69,11 @@ fun Fragment.loadAdaptiveBanner(container: ViewGroup, unitId: String) {
   }
 
   load()
+}
+
+fun Activity.loadInterstitial(): InterstitialAd {
+  return InterstitialAd(applicationContext).apply {
+    adUnitId = Ads.INTERSTITIAL_UNIT_ID
+    loadAd(AdRequest.Builder().build())
+  }
 }

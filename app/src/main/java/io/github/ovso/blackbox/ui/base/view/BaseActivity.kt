@@ -3,6 +3,8 @@ package io.github.ovso.blackbox.ui.base.view
 import android.os.Bundle
 import android.view.MenuItem
 import dagger.android.support.DaggerAppCompatActivity
+import io.github.ovso.blackbox.Ads
+import io.github.ovso.blackbox.exts.loadAdaptiveBanner
 import kotlinx.android.synthetic.main.app_bar_main.ad_container
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
 
@@ -19,7 +21,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     setSupportActionBar(toolbar)
     supportActionBar!!.setDisplayShowTitleEnabled(isTitle)
     onCreated(savedInstanceState)
-    ad_container.addView(MyAdView.getAdmobAdView(this))
+    loadAdaptiveBanner(ad_container, Ads.BANNER_UNIT_ID)
   }
 
   protected abstract fun onCreated(savedInstanceState: Bundle?)

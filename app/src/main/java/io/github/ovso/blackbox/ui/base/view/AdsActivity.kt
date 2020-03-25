@@ -1,16 +1,20 @@
 package io.github.ovso.blackbox.ui.base.view
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.InterstitialAd
+import io.github.ovso.blackbox.exts.loadInterstitial
 
+@SuppressLint("Registered")
 open class AdsActivity : Activity() {
-  internal lateinit var interstitialAd: InterstitialAd
+
+  private val interstitialAd by lazy {
+    loadInterstitial()
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    interstitialAd = MyAdView.getAdmobInterstitialAd(applicationContext)
     interstitialAd.adListener = object : AdListener() {
       override fun onAdClosed() {
         super.onAdClosed()
