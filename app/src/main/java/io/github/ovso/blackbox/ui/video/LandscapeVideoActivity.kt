@@ -6,9 +6,9 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragment
 import io.github.ovso.blackbox.R
-import io.github.ovso.blackbox.Security
+import io.github.ovso.blackbox.data.Keys
 import io.github.ovso.blackbox.ui.base.view.AdsActivity
-import kotlinx.android.synthetic.main.activity_fullscreen_video.youtube_fragment
+import kotlinx.android.synthetic.main.activity_fullscreen_video.*
 
 class LandscapeVideoActivity : AdsActivity() {
 
@@ -17,7 +17,7 @@ class LandscapeVideoActivity : AdsActivity() {
     setContentView(R.layout.activity_fullscreen_video)
     if (intent.hasExtra("video_id")) {
       val youTubePlayerFragment = youtube_fragment as YouTubePlayerFragment
-      youTubePlayerFragment.initialize(Security.KEY.value,
+      youTubePlayerFragment.initialize(Keys.KEY,
           object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
               provider: YouTubePlayer.Provider,

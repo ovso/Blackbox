@@ -1,13 +1,13 @@
 package io.github.ovso.blackbox.data.network
 
 import android.text.TextUtils
-import io.github.ovso.blackbox.Security
 import io.github.ovso.blackbox.data.KeyName
+import io.github.ovso.blackbox.data.Keys
 import io.github.ovso.blackbox.data.network.model.Search
 import io.reactivex.Single
-import java.util.HashMap
-import javax.inject.Inject
 import okhttp3.Headers
+import java.util.*
+import javax.inject.Inject
 
 class SearchRequest @Inject constructor() : BaseRequest<SearchService>() {
   override val apiClass: Class<SearchService>
@@ -38,7 +38,7 @@ class SearchRequest @Inject constructor() : BaseRequest<SearchService>() {
     queryMap[KeyName.ORDER.get()] = "date"
     queryMap[KeyName.TYPE.get()] = "video"
     queryMap[KeyName.VIDEO_SYNDICATED.get()] = "true"
-    queryMap[KeyName.KEY.get()] = Security.KEY.value
+    queryMap[KeyName.KEY.get()] = Keys.KEY
     queryMap[KeyName.PART.get()] = "snippet"
     if (!TextUtils.isEmpty(pageToken)) queryMap[KeyName.PAGE_TOKEN.get()] = pageToken!!
     return queryMap
