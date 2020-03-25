@@ -118,14 +118,7 @@ class VideoFragment : BaseFragment(),
   }
 
   companion object {
-
-    fun newInstance(args: Bundle): Fragment {
-      val f = VideoFragment()
-      f.arguments = args
-      return f
-    }
-
-    fun newInstance2(position: Int): Fragment {
+    fun newInstance(position: Int): Fragment {
       val f = VideoFragment()
       f.arguments = bundleOf("position" to position)
       return f

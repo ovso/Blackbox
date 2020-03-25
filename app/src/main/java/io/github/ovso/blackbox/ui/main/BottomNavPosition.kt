@@ -23,10 +23,10 @@ fun findNavigationPositionById(id: Int): BottomNavPosition = when (id) {
 }
 
 fun BottomNavPosition.createFragment(): Fragment = when (this) {
-  BottomNavPosition.BLACKBOX -> VideoFragment.newInstance2(0)
-  BottomNavPosition.MISTAKE_RATIO -> VideoFragment.newInstance2(1)
-  BottomNavPosition.COPING_WITH_ACCIDENTS -> VideoFragment.newInstance2(2)
-  BottomNavPosition.OVERSEAS_BLACKBOX -> VideoFragment.newInstance2(3)
+  BottomNavPosition.BLACKBOX -> VideoFragment.newInstance(0)
+  BottomNavPosition.MISTAKE_RATIO -> VideoFragment.newInstance(1)
+  BottomNavPosition.COPING_WITH_ACCIDENTS -> VideoFragment.newInstance(2)
+  BottomNavPosition.OVERSEAS_BLACKBOX -> VideoFragment.newInstance(3)
 }
 
 fun BottomNavPosition.getTag(): String = when (this) {
