@@ -57,8 +57,7 @@ class VideoFragmentPresenterImpl(
       .subscribe(object : SingleObserver<Search> {
         override fun onSuccess(t: Search) {
           nextPageToken = t.nextPageToken
-//          val items = searchRequest.getAdsAddedItem(t.items!!)
-          adapterDataModel.addAll(t.items!!)
+          adapterDataModel.addAll(searchRequest.getAdsAddedItem(t.items!!))
           view.refresh()
           view.setLoaded()
           view.hideLoading()
