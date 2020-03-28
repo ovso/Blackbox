@@ -7,8 +7,8 @@ import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListene
 import java.util.ArrayList
 
 class VideoAdapter : RecyclerView.Adapter<VideoViewHolder>(),
-    VideoAdapterView,
-    VideoAdapterDataModel<SearchItem> {
+  VideoAdapterView,
+  VideoAdapterDataModel<SearchItem> {
   var onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener<SearchItem>? = null
   private val items = ArrayList<SearchItem>()
 
