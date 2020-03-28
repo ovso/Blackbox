@@ -2,6 +2,7 @@ package io.github.ovso.blackbox.exts
 
 import android.app.Activity
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
@@ -50,6 +51,21 @@ fun Activity.loadAdaptiveBanner(container: ViewGroup, unitId: String) {
   fun load() {
     adView.adUnitId = unitId
     adView.adSize = adaptiveBannerAdSize()
+    val adRequest = AdRequest.Builder().build()
+    adView.loadAd(adRequest)
+  }
+
+  load()
+}
+
+
+fun ViewGroup.loadBanner(unitId: String) {
+  val adView = AdView(this.context)
+  this.addView(adView)
+
+  fun load() {
+    adView.adUnitId = unitId
+    adView.adSize = AdSize.BANNER
     val adRequest = AdRequest.Builder().build()
     adView.loadAd(adRequest)
   }

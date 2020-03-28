@@ -6,7 +6,10 @@ import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener
 import java.util.ArrayList
 
-class VideoAdapter : RecyclerView.Adapter<VideoViewHolder>(),
+const val ITEM_TYPE_NORMAL = 0
+const val ITEM_TYPE_ADS = 1
+
+class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
   VideoAdapterView,
   VideoAdapterDataModel<SearchItem> {
   var onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener<SearchItem>? = null
@@ -18,16 +21,27 @@ class VideoAdapter : RecyclerView.Adapter<VideoViewHolder>(),
   override fun onCreateViewHolder(
     viewGroup: ViewGroup,
     viewType: Int
-  ): VideoViewHolder {
-    return VideoViewHolder.create(viewGroup)
+  ): RecyclerView.ViewHolder {
+    return when (viewType == ITEM_TYPE_NORMAL) {
+      true -> VideoViewHolder.create(viewGroup)
+      false -> AdsViewHolder.create(viewGroup)
+    }
+  }
+
+  override fun getItemViewType(position: Int): Int {
+    return getItem(position).snippet?.let { ITEM_TYPE_NORMAL } ?: ITEM_TYPE_ADS
   }
 
   override fun onBindViewHolder(
-    viewHolder: VideoViewHolder,
+    viewHolder: RecyclerView.ViewHolder,
     position: Int
   ) {
-    viewHolder.bind(getItem(position))
-    viewHolder.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener
+    if (viewHolder is VideoViewHolder) {
+      viewHolder.bind(getItem(position))
+      viewHolder.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener
+    } else if (viewHolder is AdsViewHolder) {
+      viewHolder.bind(getItem(position))
+    }
   }
 
   override fun getItemCount(): Int {
