@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.exts.loadAdaptiveBanner

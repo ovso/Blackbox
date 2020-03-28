@@ -3,7 +3,6 @@ package io.github.ovso.blackbox.ui.base.view
 import android.os.Bundle
 import android.view.MenuItem
 import dagger.android.support.DaggerAppCompatActivity
-import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.exts.loadAdaptiveBanner
 import kotlinx.android.synthetic.main.app_bar_main.ad_container
 import kotlinx.android.synthetic.main.app_bar_main.toolbar

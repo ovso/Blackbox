@@ -253,7 +253,7 @@ annotationProcessor 'com.google.dagger:dagger-android-processor:2.x'
             'applicationId'    : 'io.github.ovso.blackbox',
             'targetSdkVersion' : 29,
             'minSdkVersion'    : 21,
-            'versionCode'      : 3,
+            'versionCode'      : 4,
 //            "versionNameMajor" : 1,
 //            "versionNameMinor" : 0,
 //            "versionNamePatch" : 0,

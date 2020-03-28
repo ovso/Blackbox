@@ -2,7 +2,6 @@ package io.github.ovso.blackbox.utils
 
 import android.content.Context
 import com.google.android.gms.ads.MobileAds
-import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.BuildConfig
 import timber.log.Timber
 
