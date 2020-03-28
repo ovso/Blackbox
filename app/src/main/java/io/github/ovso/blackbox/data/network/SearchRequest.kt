@@ -15,11 +15,7 @@ class SearchRequest @Inject constructor() : BaseRequest<SearchService>() {
   override val baseUrl: String
     get() = ApiEndPoint.SEARCH.url
 
-  override fun createHeaders(): Headers {
-
-    return Headers.Builder()
-        .build()
-  }
+  override fun createHeaders() = Headers.Builder().build()
 
   fun getResult(
     q: String,
