@@ -111,10 +111,10 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':nativetemplates')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
-
     implementation deps.androidx.values()
     implementation deps.firebase.values()
 
