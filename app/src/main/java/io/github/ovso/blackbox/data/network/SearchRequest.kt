@@ -4,7 +4,7 @@ import android.text.TextUtils
 import io.github.ovso.blackbox.data.KeyName
 import io.github.ovso.blackbox.data.Keys
 import io.github.ovso.blackbox.data.network.model.Search
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import okhttp3.Headers
 import java.util.*
 import javax.inject.Inject

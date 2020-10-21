@@ -1,17 +1,13 @@
 package io.github.ovso.blackbox.data.network
 
-import java.io.IOException
-import java.util.concurrent.TimeUnit
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.Headers
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 abstract class BaseRequest<T> {
   val api: T
@@ -26,10 +22,10 @@ abstract class BaseRequest<T> {
   private fun createRetrofit(): Retrofit {
 
     return Builder().baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .client(createClient())
-        .build()
+      .addConverterFactory(GsonConverterFactory.create())
+      .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+      .client(createClient())
+      .build()
   }
 
   private fun createClient(): OkHttpClient {
@@ -39,8 +35,8 @@ abstract class BaseRequest<T> {
     httpClient.addInterceptor { chain ->
       val original = chain.request()
       val requestBuilder = original.newBuilder()
-          .header("Content-Type", "plain/text")
-          .headers(this@BaseRequest.createHeaders())
+        .header("Content-Type", "plain/text")
+        .headers(this@BaseRequest.createHeaders())
       val request = requestBuilder.build()
       chain.proceed(request)
     }
@@ -52,7 +48,7 @@ abstract class BaseRequest<T> {
   }
 
   companion object {
-    val TIMEOUT_SECONDS = 7
+    const val TIMEOUT_SECONDS = 1000 * 60
   }
 
 }

@@ -12,9 +12,9 @@ import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel
 import io.github.ovso.blackbox.utils.ResourceProvider
 import io.github.ovso.blackbox.utils.SchedulersFacade
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.core.SingleObserver
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import timber.log.Timber
 
 class VideoFragmentPresenterImpl(

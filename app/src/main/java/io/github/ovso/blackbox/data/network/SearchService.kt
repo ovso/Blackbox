@@ -1,7 +1,7 @@
 package io.github.ovso.blackbox.data.network
 
 import io.github.ovso.blackbox.data.network.model.Search
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 

@@ -1,10 +1,7 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
-import androidx.annotation.IdRes
-import io.github.ovso.blackbox.R
-import io.github.ovso.blackbox.data.NavMenu
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainPresenterImpl internal constructor(
   private val view: MainPresenter.View,
