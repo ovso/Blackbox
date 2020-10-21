@@ -1,8 +1,9 @@
-object DefaultConfig {
+object Config {
   const val compileSdk = 30
   const val minSdk = 23
   const val targetSdk = 30
   const val appId = "io.github.ovso.blackbox"
+  const val versionCode = 4
 }
 
 object Versions {
