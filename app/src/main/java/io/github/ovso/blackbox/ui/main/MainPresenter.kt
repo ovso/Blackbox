@@ -24,8 +24,6 @@ interface MainPresenter {
 
     fun showMessage(msg: String)
 
-    fun changeTheme()
-
     fun removeBottomNavMenu()
   }
 }

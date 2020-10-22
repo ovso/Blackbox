@@ -81,10 +81,6 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
   override fun showMessage(msg: String) {}
 
-  override fun changeTheme() {
-    setTheme(R.style.AppTheme_NoActionBar)
-  }
-
   override fun removeBottomNavMenu() {
     bottom_navigation_view.menu.removeItem(R.id.action_mis_ratio)
     bottom_navigation_view.menu.removeItem(R.id.action_copi_with)

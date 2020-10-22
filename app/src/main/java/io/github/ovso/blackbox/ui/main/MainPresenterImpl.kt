@@ -9,10 +9,6 @@ class MainPresenterImpl internal constructor(
 ) : MainPresenter {
   private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-  init {
-    view.changeTheme()
-  }
-
   override fun onCreate(savedInstanceState: Bundle?) {
     view.setListener()
 
