@@ -92,6 +92,14 @@ android {
     }
   }
 
+  buildFeatures {
+    viewBinding = true
+  }
+
+  androidExtensions {
+    isExperimental = true
+  }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -99,10 +107,6 @@ android {
 
   kotlinOptions {
     jvmTarget = "1.8"
-  }
-
-  androidExtensions {
-    isExperimental = true
   }
 
   lintOptions {
@@ -175,7 +179,7 @@ dependencies {
 
 
   // firebase
-  implementation(platform("com.google.firebase:firebase-bom:25.12.0"))
+  implementation(platform("com.google.firebase:firebase-bom:${Versions.firebase_bom}"))
   implementation("com.google.firebase:firebase-ads")
   implementation("com.google.firebase:firebase-crashlytics-ktx")
   implementation("com.google.firebase:firebase-analytics-ktx")

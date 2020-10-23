@@ -25,6 +25,7 @@ object Versions {
   const val room = "2.2.5"
   const val firebase_ads = "19.4.0"
   const val firebase_analytics = "17.6.0"
+  const val firebase_bom = "25.12.0"
   const val retrofit = "2.9.0"
   const val retrofit_rxjava2 = "2.6.2"
   const val logging_interceptor = "4.7.2"

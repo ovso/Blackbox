@@ -2,5 +2,6 @@ rootProject.name = "Blackbox"
 
 include(
   ":app",
-  ":nativetemplates"
+  ":nativetemplates",
+  ":commons"
 )
