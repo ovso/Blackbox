@@ -122,7 +122,6 @@ android {
 }
 
 dependencies {
-  implementation(project(":nativetemplates"))
   implementation(
     fileTree(
       mapOf(
