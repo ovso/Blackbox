@@ -3,6 +3,7 @@ package io.github.ovso.blackbox.ui.main
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.exts.attach
 import io.github.ovso.blackbox.exts.detach
@@ -89,6 +90,8 @@ class MainActivity : BaseActivity(), MainPresenter.View {
   }
 
   override fun showNativeAdsDialog() {
-
+    NativeAdsDialog(this)
+      .setUnitId(Ads.NATIVE_UNIT_ID)
+      .show()
   }
 }
