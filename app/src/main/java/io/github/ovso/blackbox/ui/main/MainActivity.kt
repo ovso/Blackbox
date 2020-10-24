@@ -7,6 +7,7 @@ import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.exts.attach
 import io.github.ovso.blackbox.exts.detach
 import io.github.ovso.blackbox.ui.base.view.BaseActivity
+import io.github.ovso.commons.ads.NativeAdsDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -85,5 +86,9 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     bottom_navigation_view.menu.removeItem(R.id.action_mis_ratio)
     bottom_navigation_view.menu.removeItem(R.id.action_copi_with)
     bottom_navigation_view.menu.removeItem(R.id.action_oversease_black_box)
+  }
+
+  override fun showNativeAdsDialog() {
+
   }
 }

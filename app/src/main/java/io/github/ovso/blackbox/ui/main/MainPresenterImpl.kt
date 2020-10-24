@@ -27,6 +27,7 @@ class MainPresenterImpl internal constructor(
   }
 
   override fun onBackPressed(isDrawerOpen: Boolean) {
+    view.showNativeAdsDialog()
     if (isDrawerOpen) {
       view.closeDrawer()
     } else {

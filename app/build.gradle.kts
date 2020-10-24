@@ -132,6 +132,7 @@ dependencies {
     )
   )
 
+  implementation(project(":commons"))
   implementation(files("libs/YouTubeAndroidPlayerApi.jar"))
 
   // coroutines
