@@ -11,7 +11,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
   protected abstract val layoutResID: Int
 
-  val isTitle: Boolean
+  private val isTitle: Boolean
     get() = true
 
   override fun onCreate(savedInstanceState: Bundle?) {
