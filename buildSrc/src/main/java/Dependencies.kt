@@ -38,7 +38,7 @@ object Versions {
   const val coroutine_android = "1.3.8"
   const val appcompat = "1.2.0"
 
-  const val mvrx = "1.5.1"
+  const val mavericks = "2.0.0-beta2"
 
   const val hilt_plugin = "2.28.1-alpha"
   const val hilt_android = "2.28.1-alpha"
@@ -48,6 +48,7 @@ object Versions {
 
   const val licenses = "17.0.0"
   const val timber = "4.7.1"
+  const val logger = "2.2.0"
   const val androidyoutubeplayer = "10.0.5"
   const val koap = "1.0.1"
   const val shimmer = "0.5.0"

@@ -213,11 +213,11 @@ dependencies {
 
   // log
   implementation("com.jakewharton.timber:timber:${Versions.timber}")
+  implementation("com.orhanobut:logger:${Versions.logger}")
 
   // network
   implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
   implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofit}")
-//  implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
   implementation("com.squareup.okhttp3:logging-interceptor:${Versions.logging_interceptor}")
   implementation("com.github.akarnokd:rxjava3-retrofit-adapter:${Versions.retrofit_rxjava3}")
 
@@ -228,6 +228,10 @@ dependencies {
   // kotlin
   implementation("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+
+  // architecture
+  implementation("com.airbnb.android:mvrx:${Versions.mavericks}")
+
   // test
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines_test}")
   testImplementation("org.mockito:mockito-core:${Versions.mockito_core}")
@@ -240,4 +244,5 @@ dependencies {
   testImplementation("androidx.test.espresso:espresso-contrib:${Versions.atsl_espresso}")
   testImplementation("androidx.test.espresso:espresso-intents:${Versions.atsl_espresso}")
   testImplementation("androidx.arch.core:core-testing:${Versions.atsl_core_testing}")
-  testImplementation("androidx.work:work-testing:${Versions.atsl_work_testing}")}
+  testImplementation("androidx.work:work-testing:${Versions.atsl_work_testing}")
+}

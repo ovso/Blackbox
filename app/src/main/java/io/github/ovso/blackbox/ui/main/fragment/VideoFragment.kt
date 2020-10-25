@@ -9,15 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
-import io.github.ovso.blackbox.ui.base.view.BaseFragment
 import io.github.ovso.blackbox.ui.base.interfaces.OnEndlessRecyclerScrollListener
 import io.github.ovso.blackbox.ui.base.interfaces.OnRecyclerViewItemClickListener
+import io.github.ovso.blackbox.ui.base.view.BaseFragment
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapter
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterView
 import io.github.ovso.blackbox.ui.video.LandscapeVideoActivity
 import io.github.ovso.blackbox.ui.video.PortraitVideoActivity
-import kotlinx.android.synthetic.main.fragment_video.recycler_view
-import kotlinx.android.synthetic.main.fragment_video.swipe_refresh_layout
+import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
 class VideoFragment : BaseFragment(),
@@ -25,7 +24,7 @@ class VideoFragment : BaseFragment(),
   OnRecyclerViewItemClickListener<SearchItem>,
   OnEndlessRecyclerScrollListener.OnLoadMoreListener {
   override fun onActivityCreate(savedInstanceState: Bundle?) {
-    presenter!!.onActivityCreated(arguments!!)
+    presenter!!.onActivityCreated(requireArguments())
   }
 
   override val layoutResID: Int
@@ -102,7 +101,7 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun changeTitle(title: CharSequence) {
-    activity!!.title = title
+    requireActivity().title = title
   }
 
   override fun onItemClick(
@@ -114,7 +113,7 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun onLoadMore() {
-    presenter!!.onLoadMore()
+//    presenter!!.onLoadMore()
   }
 
   companion object {
