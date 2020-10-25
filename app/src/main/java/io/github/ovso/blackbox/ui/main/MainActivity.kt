@@ -4,6 +4,8 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.internal.common.CrashlyticsCore
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.exts.attach
@@ -48,7 +50,10 @@ class MainActivity : BaseActivity(), MainPresenter.View {
         R.id.action_black_box -> switchFragment(BottomNavPosition.BLACKBOX)
         R.id.action_mis_ratio -> switchFragment(BottomNavPosition.MISTAKE_RATIO)
         R.id.action_copi_with -> switchFragment(BottomNavPosition.COPING_WITH_ACCIDENTS)
-        R.id.action_oversease_black_box -> switchFragment(BottomNavPosition.OVERSEAS_BLACKBOX)
+        R.id.action_oversease_black_box -> {
+          FirebaseCrashlytics.getInstance().recordException(Exception("Crash test"))
+          switchFragment(BottomNavPosition.OVERSEAS_BLACKBOX)
+        }
       }
       true
     }
@@ -93,7 +98,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
   override fun showNativeAdsDialog() {
 
-    fun onDialogClick(dialog: DialogInterface, which: Int) {
+    fun onClick(dialog: DialogInterface, which: Int) {
       dialog.dismiss()
       when (which) {
         DialogInterface.BUTTON_POSITIVE -> finish()
@@ -107,8 +112,8 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     NativeAdsDialog(this)
       .setUnitId(Ads.NATIVE_UNIT_ID)
       .setCancelable(false)
-      .setPositiveButton(R.string.quit_app, ::onDialogClick)
-      .setNeutralButton(R.string.leave_review, ::onDialogClick)
+      .setPositiveButton(R.string.quit_app, ::onClick)
+      .setNeutralButton(R.string.leave_review, ::onClick)
       .show()
   }
 }

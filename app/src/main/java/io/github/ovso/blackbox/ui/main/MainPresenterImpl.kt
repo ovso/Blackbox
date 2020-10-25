@@ -9,7 +9,6 @@ class MainPresenterImpl internal constructor(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     view.setListener()
-
     setupBottomNav()
   }
 
