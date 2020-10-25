@@ -14,4 +14,6 @@
   <string name="landscape_mode">가로모드</string>
   <string name="please_select_the_player_mode">플레이어 모드를 선택해 주세요</string>
   <string name="black_box_overseas">해외 블랙박스</string>
+  <string name="quit_app">종료하기</string>
+  <string name="leave_review">리뷰남기기</string>
 </resources>

@@ -1,13 +1,11 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainPresenterImpl internal constructor(
   private val view: MainPresenter.View,
   private val language: String
 ) : MainPresenter {
-  private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     view.setListener()
@@ -27,14 +25,9 @@ class MainPresenterImpl internal constructor(
   }
 
   override fun onBackPressed(isDrawerOpen: Boolean) {
-    view.showNativeAdsDialog()
-/*
-    if (isDrawerOpen) {
-      view.closeDrawer()
-    } else {
-      compositeDisposable.clear()
-      view.finish()
+    when (isDrawerOpen) {
+      true -> view.closeDrawer()
+      else -> view.showNativeAdsDialog()
     }
-*/
   }
 }

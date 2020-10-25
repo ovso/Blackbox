@@ -1,5 +1,6 @@
 package io.github.ovso.blackbox.ui.main
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import io.github.ovso.blackbox.exts.attach
 import io.github.ovso.blackbox.exts.detach
 import io.github.ovso.blackbox.ui.base.view.BaseActivity
 import io.github.ovso.commons.ads.NativeAdsDialog
+import io.github.ovso.commons.ads.navigateToStore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -90,8 +92,23 @@ class MainActivity : BaseActivity(), MainPresenter.View {
   }
 
   override fun showNativeAdsDialog() {
+
+    fun onDialogClick(dialog: DialogInterface, which: Int) {
+      dialog.dismiss()
+      when (which) {
+        DialogInterface.BUTTON_POSITIVE -> finish()
+        else -> {
+          navigateToStore()
+          finish()
+        }
+      }
+    }
+
     NativeAdsDialog(this)
       .setUnitId(Ads.NATIVE_UNIT_ID)
+      .setCancelable(false)
+      .setPositiveButton(R.string.quit_app, ::onDialogClick)
+      .setNeutralButton(R.string.leave_review, ::onDialogClick)
       .show()
   }
 }

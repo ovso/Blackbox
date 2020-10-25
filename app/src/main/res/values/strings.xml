@@ -13,5 +13,7 @@
     <string name="portrait_mode">Portrait</string>
     <string name="landscape_mode">Landscape</string>
     <string name="please_select_the_player_mode">Please select the player mode</string>
-    <string name="black_box_overseas">해외 블랙박스</string>
+    <string name="black_box_overseas">Blackbox</string>
+    <string name="quit_app">Quit</string>
+    <string name="leave_review">Review</string>
 </resources>
