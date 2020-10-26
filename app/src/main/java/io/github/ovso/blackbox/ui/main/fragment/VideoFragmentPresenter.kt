@@ -6,7 +6,7 @@ import io.github.ovso.blackbox.data.network.model.SearchItem
 
 interface VideoFragmentPresenter {
 
-  fun onActivityCreated(args: Bundle)
+//  fun onActivityCreated(args: Bundle)
 
   fun onDestroyView()
 

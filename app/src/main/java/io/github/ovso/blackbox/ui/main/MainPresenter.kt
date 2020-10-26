@@ -24,7 +24,6 @@ interface MainPresenter {
 
     fun showMessage(msg: String)
 
-    fun removeBottomNavMenu()
     fun showNativeAdsDialog()
   }
 }

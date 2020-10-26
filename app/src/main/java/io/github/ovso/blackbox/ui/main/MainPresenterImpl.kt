@@ -10,11 +10,12 @@ class MainPresenterImpl internal constructor(
   override fun onCreate(savedInstanceState: Bundle?) {
     view.setListener()
     setupBottomNav()
+//    throw KotlinNullPointerException("Crashlytics test")
   }
 
   private fun setupBottomNav() {
     if (!language.equals("ko", ignoreCase = true)) {
-      view.removeBottomNavMenu()
+//      view.removeBottomNavMenu()
     }
   }
 

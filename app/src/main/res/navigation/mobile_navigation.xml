@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_blackbox">
+
+    <fragment
+        android:id="@+id/navigation_blackbox"
+        android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
+        android:label="@string/black_box"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/navigation_mis_ratio"
+        android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
+        android:label="@string/mis_ratio"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/navigation_copi_with"
+        android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
+        android:label="@string/copi_with"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/navigation_black_box_overseas"
+        android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
+        android:label="@string/black_box_overseas"
+        tools:layout="@layout/fragment_video" />
+
+</navigation>

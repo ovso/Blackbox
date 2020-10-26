@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-      android:id="@id/action_black_box"
+      android:id="@id/navigation_blackbox"
       android:icon="@drawable/ic_action_name"
       android:title="@string/black_box"/>
   <item
-      android:id="@id/action_mis_ratio"
+      android:id="@id/navigation_mis_ratio"
       android:icon="@drawable/ic_pie_chart"
       android:title="@string/mis_ratio"/>
   <item
-      android:id="@id/action_copi_with"
+      android:id="@id/navigation_copi_with"
       android:icon="@drawable/ic_report_problem"
       android:title="@string/copi_with"/>
   <item
-      android:id="@id/action_oversease_black_box"
+      android:id="@id/navigation_black_box_overseas"
       android:icon="@drawable/ic_action_name"
       android:title="@string/black_box_overseas"/>
 </menu>

@@ -39,6 +39,7 @@ class VideoFragmentPresenterImpl(
       return builder
     }
 
+/*
   override fun onActivityCreated(args: Bundle) {
     view.setupRecyclerView()
     view.setupSwipeRefresh()
@@ -47,6 +48,7 @@ class VideoFragmentPresenterImpl(
     q = resourceProvider.getStringArray(R.array.q)[position]
 //    reqVideo()
   }
+*/
 
   private fun reqVideo() {
     if (adapterDataModel.size > 0) return
