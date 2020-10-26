@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.exts.attach
@@ -46,6 +47,9 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     )
     setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
+    navView.setOnNavigationItemReselectedListener {
+      Logger.d(it.toString())
+    }
   }
 
   override fun setListener() {

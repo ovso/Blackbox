@@ -1,12 +1,14 @@
 package io.github.ovso.blackbox.ui.main.fragment
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.base.interfaces.OnEndlessRecyclerScrollListener
@@ -25,6 +27,7 @@ class VideoFragment : BaseFragment(),
   OnEndlessRecyclerScrollListener.OnLoadMoreListener {
   override fun onActivityCreate(savedInstanceState: Bundle?) {
 //    presenter!!.onActivityCreated(requireArguments())
+    Logger.d("savedInstanceState = $savedInstanceState")
   }
 
   override val layoutResID: Int
@@ -36,11 +39,6 @@ class VideoFragment : BaseFragment(),
     @Inject set
   var adapterView: VideoAdapterView? = null
     @Inject set
-
-  override fun onDestroyView() {
-    presenter!!.onDestroyView()
-    super.onDestroyView()
-  }
 
   override fun setupRecyclerView() {
     recycler_view.layoutManager = LinearLayoutManager(context)
@@ -123,4 +121,27 @@ class VideoFragment : BaseFragment(),
       return f
     }
   }
+
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    presenter!!.onDestroyView()
+    Logger.d("onDestroyView")
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    Logger.d("onDestroy")
+  }
+
+  override fun onDetach() {
+    super.onDetach()
+    Logger.d("onDetach")
+  }
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    Logger.d("onAttach")
+  }
+
 }
