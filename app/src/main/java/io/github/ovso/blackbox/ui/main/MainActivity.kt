@@ -2,24 +2,17 @@ package io.github.ovso.blackbox.ui.main
 
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
-import io.github.ovso.blackbox.exts.attach
-import io.github.ovso.blackbox.exts.detach
 import io.github.ovso.blackbox.ui.base.view.BaseActivity
 import io.github.ovso.commons.ads.NativeAdsDialog
 import io.github.ovso.commons.ads.navigateToStore
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainPresenter.View {
@@ -116,6 +109,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
   override fun onBackPressed() {
 //    presenter!!.onBackPressed(drawer_layout.isDrawerOpen(GravityCompat.START))
+    super.onBackPressed()
   }
 
   override fun showMessage(resId: Int) {}
