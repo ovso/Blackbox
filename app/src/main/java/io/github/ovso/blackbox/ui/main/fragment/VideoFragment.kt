@@ -25,19 +25,17 @@ class VideoFragment : BaseFragment(),
   VideoFragmentPresenter.View,
   OnRecyclerViewItemClickListener<SearchItem>,
   OnEndlessRecyclerScrollListener.OnLoadMoreListener {
-  override fun onActivityCreate(savedInstanceState: Bundle?) {
-    Logger.d(requireArguments())
-  }
 
   override val layoutResID: Int
     get() = R.layout.fragment_video
 
-  var presenter: VideoFragmentPresenter? = null
-    @Inject set
-  var adapter: VideoAdapter? = null
-    @Inject set
-  var adapterView: VideoAdapterView? = null
-    @Inject set
+  @Inject lateinit var presenter: VideoFragmentPresenter
+  @Inject lateinit var adapter: VideoAdapter
+  @Inject lateinit var adapterView: VideoAdapterView
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    presenter.onViewCreated()
+  }
 
   override fun setupRecyclerView() {
     recycler_view.layoutManager = LinearLayoutManager(context)
@@ -53,7 +51,7 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun refresh() {
-    adapterView!!.refresh()
+    adapterView.refresh()
   }
 
   override fun showPortraitVideo(videoId: String) {
@@ -80,7 +78,7 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun setupSwipeRefresh() {
-    swipe_refresh_layout.setOnRefreshListener { presenter!!.onRefresh() }
+    swipe_refresh_layout.setOnRefreshListener { presenter.onRefresh() }
   }
 
   override fun hideLoading() {
@@ -106,7 +104,7 @@ class VideoFragment : BaseFragment(),
     data: SearchItem,
     itemPosition: Int
   ) {
-    presenter!!.onItemClick(data)
+    presenter.onItemClick(data)
   }
 
   override fun onLoadMore() {
@@ -124,7 +122,7 @@ class VideoFragment : BaseFragment(),
 
   override fun onDestroyView() {
     super.onDestroyView()
-    presenter!!.onDestroyView()
+    presenter.onDestroyView()
     Logger.d("onDestroyView")
   }
 

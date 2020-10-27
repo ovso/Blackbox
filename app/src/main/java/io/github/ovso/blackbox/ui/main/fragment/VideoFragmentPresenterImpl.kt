@@ -38,18 +38,24 @@ class VideoFragmentPresenterImpl(
     }
 
   init {
-    Logger.d("args = $args")
-    reqVideo(args.query)
+//    Logger.d("args = $args")
+//    reqVideo(args.query)
+  }
+
+  override fun onViewCreated() {
+    view.setupRecyclerView()
+//    reqVideo(args.query)
   }
 
   private fun reqVideo(query: String) {
 
     fun onSuccess(data: Search) {
+      Logger.d(data.items?.count())
       nextPageToken = data.nextPageToken
       adapterDataModel.addAll(searchRequest.getAdsAddedItem(data.items!!))
       view.refresh()
-      view.setLoaded()
-      view.hideLoading()
+//      view.setLoaded()
+//      view.hideLoading()
     }
 
     fun onFailure(throwable: Throwable) {
@@ -59,9 +65,9 @@ class VideoFragmentPresenterImpl(
     searchRequest.getResult(query, nextPageToken)
       .subscribeOn(schedulersFacade.io())
       .observeOn(schedulersFacade.ui())
-      .doOnSubscribe { view.showLoading() }
-      .doOnSuccess { view.hideLoading() }
-      .doOnError { view.hideLoading() }
+//      .doOnSubscribe { view.showLoading() }
+//      .doOnSuccess { view.hideLoading() }
+//      .doOnError { view.hideLoading() }
       .subscribe(::onSuccess, ::onFailure)
       .addTo(compositeDisposable)
   }

@@ -17,11 +17,4 @@ abstract class BaseFragment : DaggerFragment() {
   ): View? {
     return inflater.inflate(layoutResID, container, false)
   }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    onActivityCreate(savedInstanceState)
-  }
-
-  protected abstract fun onActivityCreate(savedInstanceState: Bundle?)
 }

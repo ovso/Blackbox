@@ -1,7 +1,5 @@
 package io.github.ovso.blackbox.ui.main.fragment
 
-import android.content.DialogInterface
-import android.os.Bundle
 import io.github.ovso.blackbox.data.network.model.SearchItem
 
 interface VideoFragmentPresenter {
@@ -15,6 +13,8 @@ interface VideoFragmentPresenter {
   fun onLoadMore()
 
   fun onRefresh()
+
+  fun onViewCreated()
 
   interface View {
 
