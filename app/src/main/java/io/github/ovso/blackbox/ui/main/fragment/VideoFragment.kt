@@ -26,8 +26,7 @@ class VideoFragment : BaseFragment(),
   OnRecyclerViewItemClickListener<SearchItem>,
   OnEndlessRecyclerScrollListener.OnLoadMoreListener {
   override fun onActivityCreate(savedInstanceState: Bundle?) {
-//    presenter!!.onActivityCreated(requireArguments())
-    Logger.d("savedInstanceState = $savedInstanceState")
+    Logger.d(requireArguments())
   }
 
   override val layoutResID: Int

@@ -1,10 +1,9 @@
 package io.github.ovso.blackbox.ui.main.fragment
 
 import android.content.ActivityNotFoundException
-import android.os.Bundle
-import android.text.TextUtils
+import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.R
-import io.github.ovso.blackbox.data.KeyName
+import io.github.ovso.blackbox.data.args.VideoArgs
 import io.github.ovso.blackbox.data.network.SearchRequest
 import io.github.ovso.blackbox.data.network.getAdsAddedItem
 import io.github.ovso.blackbox.data.network.model.Search
@@ -12,9 +11,8 @@ import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel
 import io.github.ovso.blackbox.utils.ResourceProvider
 import io.github.ovso.blackbox.utils.SchedulersFacade
-import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.kotlin.addTo
 import timber.log.Timber
 
 class VideoFragmentPresenterImpl(
@@ -22,12 +20,12 @@ class VideoFragmentPresenterImpl(
   private val searchRequest: SearchRequest,
   private val resourceProvider: ResourceProvider,
   private val schedulersFacade: SchedulersFacade,
-  private val adapterDataModel: VideoAdapterDataModel<SearchItem>
+  private val adapterDataModel: VideoAdapterDataModel<SearchItem>,
+  private val args: VideoArgs
 ) : VideoFragmentPresenter {
 
   private val compositeDisposable = CompositeDisposable()
   private var nextPageToken: String? = null
-  private var q: String? = null
   private var position: Int = 0
 
   private val title: StringBuilder
@@ -39,42 +37,33 @@ class VideoFragmentPresenterImpl(
       return builder
     }
 
-/*
-  override fun onActivityCreated(args: Bundle) {
-    view.setupRecyclerView()
-    view.setupSwipeRefresh()
-    position = args.getInt(KeyName.POSITION.get())
-    view.changeTitle(title)
-    q = resourceProvider.getStringArray(R.array.q)[position]
-//    reqVideo()
+  init {
+    Logger.d("args = $args")
+    reqVideo(args.query)
   }
-*/
 
-  private fun reqVideo() {
-    if (adapterDataModel.size > 0) return
-    view.showLoading()
-    searchRequest.getResult(q!!, nextPageToken)
+  private fun reqVideo(query: String) {
+
+    fun onSuccess(data: Search) {
+      nextPageToken = data.nextPageToken
+      adapterDataModel.addAll(searchRequest.getAdsAddedItem(data.items!!))
+      view.refresh()
+      view.setLoaded()
+      view.hideLoading()
+    }
+
+    fun onFailure(throwable: Throwable) {
+      Logger.e(throwable, throwable.message.toString())
+    }
+
+    searchRequest.getResult(query, nextPageToken)
       .subscribeOn(schedulersFacade.io())
       .observeOn(schedulersFacade.ui())
-      .subscribe(object : SingleObserver<Search> {
-        override fun onSuccess(t: Search) {
-          nextPageToken = t.nextPageToken
-          adapterDataModel.addAll(searchRequest.getAdsAddedItem(t.items!!))
-          view.refresh()
-          view.setLoaded()
-          view.hideLoading()
-        }
-
-        override fun onSubscribe(d: Disposable) {
-          compositeDisposable.add(d)
-        }
-
-        override fun onError(e: Throwable) {
-          Timber.e(e)
-          view.hideLoading()
-        }
-
-      })
+      .doOnSubscribe { view.showLoading() }
+      .doOnSuccess { view.hideLoading() }
+      .doOnError { view.hideLoading() }
+      .subscribe(::onSuccess, ::onFailure)
+      .addTo(compositeDisposable)
   }
 
   override fun onDestroyView() {
@@ -92,6 +81,7 @@ class VideoFragmentPresenterImpl(
   }
 
   override fun onLoadMore() {
+/*
     if (!TextUtils.isEmpty(nextPageToken) && !TextUtils.isEmpty(q)) {
       val disposable = searchRequest.getResult(q!!, nextPageToken)
         .subscribeOn(schedulersFacade.io())
@@ -106,9 +96,11 @@ class VideoFragmentPresenterImpl(
           }, { throwable -> Timber.d(throwable) })
       compositeDisposable.add(disposable)
     }
+*/
   }
 
   override fun onRefresh() {
+/*
     adapterDataModel.clear()
     view.refresh()
     nextPageToken = null
@@ -129,5 +121,6 @@ class VideoFragmentPresenterImpl(
           view.hideLoading()
         })
     compositeDisposable.add(disposable)
+*/
   }
 }
