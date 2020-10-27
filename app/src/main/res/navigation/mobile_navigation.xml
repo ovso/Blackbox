@@ -9,7 +9,9 @@
         android:id="@+id/navigation_blackbox"
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
         android:label="@string/black_box"
-        tools:layout="@layout/fragment_video" />
+        tools:layout="@layout/fragment_video">
+
+    </fragment>
     <fragment
         android:id="@+id/navigation_mis_ratio"
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
