@@ -10,22 +10,40 @@
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
         android:label="@string/black_box"
         tools:layout="@layout/fragment_video">
-
+        <argument
+            android:name="query"
+            android:defaultValue="@string/query_blackbox_ko"
+            app:argType="reference" />
     </fragment>
     <fragment
         android:id="@+id/navigation_mis_ratio"
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
         android:label="@string/mis_ratio"
-        tools:layout="@layout/fragment_video" />
+        tools:layout="@layout/fragment_video">
+        <argument
+            android:name="query"
+            app:argType="reference"
+            android:defaultValue="@string/query_mis_ratio" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_copi_with"
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
         android:label="@string/copi_with"
-        tools:layout="@layout/fragment_video" />
+        tools:layout="@layout/fragment_video">
+        <argument
+            android:name="query"
+            app:argType="reference"
+            android:defaultValue="@string/query_copi_with" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_black_box_overseas"
         android:name="io.github.ovso.blackbox.ui.main.fragment.VideoFragment"
         android:label="@string/black_box_overseas"
-        tools:layout="@layout/fragment_video" />
+        tools:layout="@layout/fragment_video">
+        <argument
+            android:name="query"
+            app:argType="reference"
+            android:defaultValue="@string/query_blackbox_overseas" />
+    </fragment>
 
 </navigation>

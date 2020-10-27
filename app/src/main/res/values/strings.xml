@@ -16,4 +16,8 @@
     <string name="black_box_overseas">Blackbox</string>
     <string name="quit_app">Quit</string>
     <string name="leave_review">Review</string>
+    <string name="query_blackbox_ko">한국 블랙박스 사고</string>
+    <string name="query_mis_ratio">몇대몇 한문철</string>
+    <string name="query_copi_with">자동차 사고 대처</string>
+    <string name="query_blackbox_overseas">해외 블랙박스 사고</string>
 </resources>
