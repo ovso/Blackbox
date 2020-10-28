@@ -2,14 +2,12 @@ package io.github.ovso.blackbox.ui.main.fragment
 
 import android.content.ActivityNotFoundException
 import com.orhanobut.logger.Logger
-import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.args.VideoArgs
 import io.github.ovso.blackbox.data.network.SearchRequest
 import io.github.ovso.blackbox.data.network.getAdsAddedItem
 import io.github.ovso.blackbox.data.network.model.Search
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterDataModel
-import io.github.ovso.blackbox.utils.ResourceProvider
 import io.github.ovso.blackbox.utils.SchedulersFacade
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
@@ -18,7 +16,6 @@ import timber.log.Timber
 class VideoFragmentPresenterImpl(
   private val view: VideoFragmentPresenter.View,
   private val searchRequest: SearchRequest,
-  private val resourceProvider: ResourceProvider,
   private val schedulersFacade: SchedulersFacade,
   private val adapterDataModel: VideoAdapterDataModel<SearchItem>,
   private val args: VideoArgs
@@ -26,21 +23,6 @@ class VideoFragmentPresenterImpl(
 
   private val compositeDisposable = CompositeDisposable()
   private var nextPageToken: String? = null
-  private var position: Int = 0
-
-  private val title: StringBuilder
-    get() {
-      val builder = StringBuilder()
-      builder.append(resourceProvider.getString(R.string.app_name))
-      builder.append(" - ")
-      builder.append(resourceProvider.getStringArray(R.array.nav_menu)[position])
-      return builder
-    }
-
-  init {
-    Logger.d("args = $args")
-//    reqVideo(args.query)
-  }
 
   override fun onViewCreated() {
     view.setupRecyclerView()
@@ -54,8 +36,6 @@ class VideoFragmentPresenterImpl(
       nextPageToken = data.nextPageToken
       adapterDataModel.addAll(searchRequest.getAdsAddedItem(data.items!!))
       view.refresh()
-//      view.setLoaded()
-//      view.hideLoading()
     }
 
     fun onFailure(throwable: Throwable) {
@@ -65,9 +45,9 @@ class VideoFragmentPresenterImpl(
     searchRequest.getResult(query, nextPageToken)
       .subscribeOn(schedulersFacade.io())
       .observeOn(schedulersFacade.ui())
-//      .doOnSubscribe { view.showLoading() }
-//      .doOnSuccess { view.hideLoading() }
-//      .doOnError { view.hideLoading() }
+      .doOnSubscribe { view.showLoading() }
+      .doOnSuccess { view.hideLoading() }
+      .doOnError { view.hideLoading() }
       .subscribe(::onSuccess, ::onFailure)
       .addTo(compositeDisposable)
   }

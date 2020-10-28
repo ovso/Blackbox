@@ -1,12 +1,13 @@
 package io.github.ovso.blackbox.ui.main.fragment.di
 
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import dagger.Module
 import dagger.Provides
 import io.github.ovso.blackbox.data.args.VideoArgs
 import io.github.ovso.blackbox.data.network.SearchRequest
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.main.fragment.VideoFragment
+import io.github.ovso.blackbox.ui.main.fragment.VideoFragmentArgs
 import io.github.ovso.blackbox.ui.main.fragment.VideoFragmentPresenter
 import io.github.ovso.blackbox.ui.main.fragment.VideoFragmentPresenterImpl
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapter
@@ -24,13 +25,12 @@ class VideoFragmentModule {
   internal fun provideVideoFragmentPresenter(
     view: VideoFragmentPresenter.View,
     searchRequest: SearchRequest,
-    resourceProvider: ResourceProvider,
     schedulersFacade: SchedulersFacade,
     adapterDataModel: VideoAdapterDataModel<SearchItem>,
     args: VideoArgs
   ): VideoFragmentPresenter {
     return VideoFragmentPresenterImpl(
-      view, searchRequest, resourceProvider, schedulersFacade,
+      view, searchRequest, schedulersFacade,
       adapterDataModel, args
     )
   }
@@ -53,7 +53,7 @@ class VideoFragmentModule {
 
   @Provides
   fun provideArguments(fragment: VideoFragment): VideoArgs {
-    val query = fragment.getString(fragment.requireArguments().getInt("query"))
-    return VideoArgs(query)
+    val navArgs = fragment.navArgs<VideoFragmentArgs>()
+    return VideoArgs(fragment.getString(navArgs.value.query))
   }
 }

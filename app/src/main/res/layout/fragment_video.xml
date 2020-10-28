@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.github.ovso.blackbox.ui.base.view.VideoRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recycler_view"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
+
+    <io.github.ovso.blackbox.ui.base.view.VideoRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/progressbar_circle"
+        android:indeterminateDuration="100"
+        android:visibility="gone" />
+
+</FrameLayout>

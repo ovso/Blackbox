@@ -6,7 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.R
@@ -29,11 +31,19 @@ class VideoFragment : BaseFragment(),
   override val layoutResID: Int
     get() = R.layout.fragment_video
 
-  @Inject lateinit var presenter: VideoFragmentPresenter
-  @Inject lateinit var adapter: VideoAdapter
-  @Inject lateinit var adapterView: VideoAdapterView
+  @Inject
+  lateinit var presenter: VideoFragmentPresenter
+
+  @Inject
+  lateinit var adapter: VideoAdapter
+
+  @Inject
+  lateinit var adapterView: VideoAdapterView
+
+  private val args: VideoFragmentArgs by navArgs()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    Logger.d("args = $args ${args.query}")
     presenter.onViewCreated()
   }
 
@@ -79,6 +89,14 @@ class VideoFragment : BaseFragment(),
 
   override fun changeTitle(title: CharSequence) {
     requireActivity().title = title
+  }
+
+  override fun showLoading() {
+    progressBar.isVisible = true
+  }
+
+  override fun hideLoading() {
+    progressBar.isVisible = false
   }
 
   override fun onItemClick(
