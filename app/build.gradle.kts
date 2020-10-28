@@ -14,6 +14,7 @@ plugins {
   id("kotlin-android")
   id("org.ajoberstar.grgit") version "4.0.2"
   id("com.google.firebase.crashlytics")
+  id("androidx.navigation.safeargs.kotlin")
 }
 
 val grGit: Grgit = Grgit.open(mapOf("currentDir" to project.rootDir))

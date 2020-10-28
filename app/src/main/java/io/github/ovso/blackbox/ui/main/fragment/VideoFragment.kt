@@ -77,24 +77,6 @@ class VideoFragment : BaseFragment(),
     recycler_view.onEndlessRecyclerScrollListener!!.setLoaded()
   }
 
-  override fun setupSwipeRefresh() {
-    swipe_refresh_layout.setOnRefreshListener { presenter.onRefresh() }
-  }
-
-  override fun hideLoading() {
-    with(swipe_refresh_layout) {
-      isEnabled = false
-      isRefreshing = false
-    }
-  }
-
-  override fun showLoading() {
-    with(swipe_refresh_layout) {
-      isEnabled = true
-      isRefreshing = true
-    }
-  }
-
   override fun changeTitle(title: CharSequence) {
     requireActivity().title = title
   }

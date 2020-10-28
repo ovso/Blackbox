@@ -38,7 +38,7 @@ class VideoFragmentPresenterImpl(
     }
 
   init {
-//    Logger.d("args = $args")
+    Logger.d("args = $args")
 //    reqVideo(args.query)
   }
 

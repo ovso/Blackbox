@@ -30,12 +30,6 @@ interface VideoFragmentPresenter {
 
     fun setLoaded()
 
-    fun setupSwipeRefresh()
-
-    fun hideLoading()
-
-    fun showLoading()
-
     fun changeTitle(title: CharSequence)
   }
 }

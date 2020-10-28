@@ -13,7 +13,7 @@ class VideoRecyclerView : RecyclerView {
   private var onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener<SearchItem>? = null
   var onEndlessRecyclerScrollListener: OnEndlessRecyclerScrollListener? = null
 
-  constructor(context: Context) : super(context) {}
+  constructor(context: Context) : super(context)
 
   constructor(
     context: Context,

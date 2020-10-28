@@ -15,6 +15,7 @@ buildscript {
     classpath("com.google.android.gms:oss-licenses-plugin:0.10.2")
 //    classpath("com.google.dagger:hilt-android-gradle-plugin:2.28.1-alpha")
     classpath("com.google.firebase:firebase-crashlytics-gradle:2.3.0")
+    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1")
   }
 }
 
