@@ -41,10 +41,10 @@ class VideoViewHolder private constructor(override val containerView: View?) :
   }
 
   private fun getDateFormat(language: String): String {
-    if (language.equals("ko", ignoreCase = true)) {
-      return "yyyy년 MM월 dd일 HH시 mm분"
+    return if (language.equals("ko", ignoreCase = true)) {
+      "yyyy년 MM월 dd일 HH시 mm분"
     } else {
-      return "yyyy/MM/dd HH:mm"
+      "yyyy/MM/dd HH:mm"
     }
   }
 

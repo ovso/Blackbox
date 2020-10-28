@@ -26,11 +26,10 @@ class VideoFragmentPresenterImpl(
 
   override fun onViewCreated() {
     view.setupRecyclerView()
-//    reqVideo(args.query)
+    reqVideo(args.query)
   }
 
   private fun reqVideo(query: String) {
-
     fun onSuccess(data: Search) {
       Logger.d(data.items?.count())
       nextPageToken = data.nextPageToken
