@@ -79,7 +79,7 @@ android {
       signingConfig = signingConfigs.getByName("release")
       isDebuggable = false
       isZipAlignEnabled = true
-      isMinifyEnabled = true
+      isMinifyEnabled = false // 개발할때
       proguardFile(getDefaultProguardFile("proguard-android.txt"))
       // global proguard settings
       proguardFile(file("proguard-rules.pro"))
@@ -134,6 +134,7 @@ dependencies {
   )
 
   implementation(project(":commons"))
+  implementation(project(":nativetemplates"))
   implementation(files("libs/YouTubeAndroidPlayerApi.jar"))
 
   // coroutines

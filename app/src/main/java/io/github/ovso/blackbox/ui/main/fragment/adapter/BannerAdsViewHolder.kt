@@ -11,7 +11,7 @@ import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.exts.loadAdaptiveBanner
 import kotlinx.android.extensions.LayoutContainer
 
-class AdsViewHolder private constructor(override val containerView: View?) :
+class BannerAdsViewHolder private constructor(override val containerView: View?) :
   RecyclerView.ViewHolder(
     containerView!!
   ), IBind<SearchItem>, LayoutContainer {
@@ -22,8 +22,8 @@ class AdsViewHolder private constructor(override val containerView: View?) :
 
   companion object {
 
-    fun create(parent: ViewGroup): AdsViewHolder {
-      return AdsViewHolder(
+    fun create(parent: ViewGroup): BannerAdsViewHolder {
+      return BannerAdsViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_ads, parent, false)
       )
     }
