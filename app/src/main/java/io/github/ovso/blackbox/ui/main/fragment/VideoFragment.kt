@@ -5,11 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
@@ -48,8 +50,23 @@ class VideoFragment : BaseFragment(),
   }
 
   override fun setupRecyclerView() {
-    recycler_view.layoutManager = LinearLayoutManager(context)
-    recycler_view.setOnItemClickListener(this)
+    recycler_view.also {
+      it.adapter = this.adapter
+      it.setOnItemClickListener(this)
+      it.addItemDecoration(
+        DividerItemDecoration(requireContext(), RecyclerView.VERTICAL).apply {
+          setDrawable(
+            ContextCompat.getDrawable(
+              requireContext(),
+              R.drawable.all_rv_divider_vertical
+            )!!
+          )
+        }
+      )
+
+    }
+  }
+  /*
     recycler_view.addOnScrollListener(
       OnEndlessRecyclerScrollListener.Builder()
         .setVisibleThreshold(20)
@@ -57,8 +74,8 @@ class VideoFragment : BaseFragment(),
         .setOnLoadMoreListener(this)
         .build()
     )
-    recycler_view.adapter = adapter
-  }
+*/
+
 
   override fun refresh() {
     adapterView.refresh()

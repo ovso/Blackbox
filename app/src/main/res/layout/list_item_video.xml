@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:toos="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="16dp"
-    app:cardCornerRadius="10dp"
-    >
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@id/root_view"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      >
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/thumbnail_image_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        />
+    android:orientation="vertical"
+    app:cardCornerRadius="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3c3c3c">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thumbnail_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/root_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_play_arrow"
+            toos:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/title_text_view"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:alpha="0.5"
-        android:background="@android:color/black"
+        android:background="#3c3c3c"
         android:ellipsize="end"
         android:gravity="center_vertical|start"
         android:lines="1"
@@ -44,14 +56,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        toos:text="어린이집 어린이집 어린이집"
-        />
+        toos:text="어린이집 어린이집 어린이집" />
+
     <TextView
         android:id="@+id/date_text_view"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:alpha="0.5"
-        android:background="@android:color/black"
+        android:background="#3c3c3c"
         android:ellipsize="end"
         android:gravity="center_vertical|start"
         android:lines="1"
@@ -62,20 +73,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        toos:text="2018년 09월 27일 00시 00분"
-        />
-    <ImageButton
-        android:id="@+id/play_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?android:selectableItemBackground"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/root_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play_arrow"
-        />
+        toos:text="2018년 09월 27일 00시 00분" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>
