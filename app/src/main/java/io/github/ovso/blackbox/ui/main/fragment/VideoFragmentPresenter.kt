@@ -1,5 +1,6 @@
 package io.github.ovso.blackbox.ui.main.fragment
 
+import androidx.activity.OnBackPressedCallback
 import io.github.ovso.blackbox.data.network.model.SearchItem
 
 interface VideoFragmentPresenter {
@@ -8,6 +9,8 @@ interface VideoFragmentPresenter {
   fun onLoadMore()
   fun onRefresh()
   fun onViewCreated()
+  fun onResume()
+  fun onPause()
 
   interface View {
     fun setupRecyclerView()
@@ -19,5 +22,7 @@ interface VideoFragmentPresenter {
     fun changeTitle(title: CharSequence)
     fun showLoading()
     fun hideLoading()
+    fun addOnBackPressedDispatcher(onBackPressedCallback: OnBackPressedCallback)
+    fun showNativeAdsDialog()
   }
 }

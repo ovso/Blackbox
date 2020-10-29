@@ -10,20 +10,12 @@ interface MainPresenter {
 
   fun onNavItemSelected(@IdRes itemId: Int): Boolean
 
-  fun onBackPressed(isDrawerOpen: Boolean)
-
   interface View {
 
-    fun setListener()
-
     fun closeDrawer()
-
-    fun finish()
 
     fun showMessage(@StringRes resId: Int)
 
     fun showMessage(msg: String)
-
-    fun showNativeAdsDialog()
   }
 }

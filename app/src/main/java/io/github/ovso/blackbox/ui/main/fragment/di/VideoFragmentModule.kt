@@ -54,6 +54,6 @@ class VideoFragmentModule {
   @Provides
   fun provideArguments(fragment: VideoFragment): VideoArgs {
     val navArgs = fragment.navArgs<VideoFragmentArgs>()
-    return VideoArgs(fragment.getString(navArgs.value.query))
+    return VideoArgs(fragment.getString(navArgs.value.query), navArgs.value.query)
   }
 }

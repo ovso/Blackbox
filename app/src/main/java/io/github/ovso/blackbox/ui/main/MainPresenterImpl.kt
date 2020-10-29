@@ -1,6 +1,7 @@
 package io.github.ovso.blackbox.ui.main
 
 import android.os.Bundle
+import com.orhanobut.logger.Logger
 
 class MainPresenterImpl internal constructor(
   private val view: MainPresenter.View,
@@ -8,26 +9,11 @@ class MainPresenterImpl internal constructor(
 ) : MainPresenter {
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    view.setListener()
-    setupBottomNav()
-//    throw KotlinNullPointerException("Crashlytics test")
-  }
-
-  private fun setupBottomNav() {
-    if (!language.equals("ko", ignoreCase = true)) {
-//      view.removeBottomNavMenu()
-    }
+    Logger.d(language)
   }
 
   override fun onNavItemSelected(itemId: Int): Boolean {
     view.closeDrawer()
     return true
-  }
-
-  override fun onBackPressed(isDrawerOpen: Boolean) {
-    when (isDrawerOpen) {
-      true -> view.closeDrawer()
-      else -> view.showNativeAdsDialog()
-    }
   }
 }

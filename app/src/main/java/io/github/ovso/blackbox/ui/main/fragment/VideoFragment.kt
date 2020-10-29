@@ -2,9 +2,12 @@ package io.github.ovso.blackbox.ui.main.fragment
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -13,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.orhanobut.logger.Logger
+import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.ui.base.interfaces.OnEndlessRecyclerScrollListener
@@ -22,6 +26,8 @@ import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapter
 import io.github.ovso.blackbox.ui.main.fragment.adapter.VideoAdapterView
 import io.github.ovso.blackbox.ui.video.LandscapeVideoActivity
 import io.github.ovso.blackbox.ui.video.PortraitVideoActivity
+import io.github.ovso.commons.ads.NativeAdsDialog
+import io.github.ovso.commons.ads.navigateToStore
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -47,6 +53,27 @@ class VideoFragment : BaseFragment(),
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     Logger.d("args = $args ${args.query}")
     presenter.onViewCreated()
+  }
+
+  override fun showNativeAdsDialog() {
+
+    fun onClick(dialog: DialogInterface, which: Int) {
+      dialog.dismiss()
+      when (which) {
+        DialogInterface.BUTTON_POSITIVE -> requireActivity().finish()
+        else -> {
+          navigateToStore()
+          requireActivity().finish()
+        }
+      }
+    }
+
+    NativeAdsDialog(requireContext())
+      .setUnitId(Ads.NATIVE_UNIT_ID)
+      .setCancelable(true)
+      .setPositiveButton(R.string.quit_app, ::onClick)
+      .setNeutralButton(R.string.leave_review, ::onClick)
+      .show()
   }
 
   override fun setupRecyclerView() {
@@ -116,6 +143,10 @@ class VideoFragment : BaseFragment(),
     progressBar.isVisible = false
   }
 
+  override fun addOnBackPressedDispatcher(onBackPressedCallback: OnBackPressedCallback) {
+    requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
+  }
+
   override fun onItemClick(
     view: View,
     data: SearchItem,
@@ -137,6 +168,15 @@ class VideoFragment : BaseFragment(),
   }
 
 
+  override fun onResume() {
+    super.onResume()
+    presenter.onResume()
+  }
+
+  override fun onPause() {
+    super.onPause()
+    presenter.onPause()
+  }
   override fun onDestroyView() {
     super.onDestroyView()
     presenter.onDestroyView()
