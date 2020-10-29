@@ -15,15 +15,14 @@ class MainActivity : BaseActivity(), MainPresenter.View {
   override val layoutResID: Int
     get() = R.layout.activity_main2
 
-  var presenter: MainPresenter? = null
-    @Inject set
+  @Inject
+  lateinit var presenter: MainPresenter
 
   override fun onCreated(savedInstanceState: Bundle?) {
-    presenter?.onCreate(savedInstanceState)
-    setupNavigation()
+    presenter.onCreate(savedInstanceState)
   }
 
-  private fun setupNavigation() {
+  override fun setupNavigation() {
     val navView: BottomNavigationView = findViewById(R.id.bnv_main)
     val navController = findNavController(R.id.nav_host_fragment)
     val appBarConfiguration = AppBarConfiguration(
@@ -40,14 +39,4 @@ class MainActivity : BaseActivity(), MainPresenter.View {
       Logger.d(it.toString())
     }
   }
-
-
-  override fun closeDrawer() {
-//    drawer_layout.closeDrawer(GravityCompat.START)
-  }
-
-
-  override fun showMessage(resId: Int) {}
-
-  override fun showMessage(msg: String) {}
 }

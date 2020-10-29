@@ -10,10 +10,6 @@ class MainPresenterImpl internal constructor(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     Logger.d(language)
-  }
-
-  override fun onNavItemSelected(itemId: Int): Boolean {
-    view.closeDrawer()
-    return true
+    view.setupNavigation()
   }
 }
