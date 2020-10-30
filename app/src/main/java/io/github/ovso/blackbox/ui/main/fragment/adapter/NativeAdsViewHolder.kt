@@ -1,16 +1,19 @@
 package io.github.ovso.blackbox.ui.main.fragment.adapter
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.data.network.model.SearchItem
-import io.github.ovso.commons.databinding.DialogNativeAds2Binding
+import io.github.ovso.commons.databinding.ViewFeedAdsSmallBinding
 
-class NativeAdsViewHolder private constructor(private val binding: DialogNativeAds2Binding) :
+
+class NativeAdsViewHolder private constructor(private val binding: ViewFeedAdsSmallBinding) :
   RecyclerView.ViewHolder(
     binding.root
   ), IBind<SearchItem> {
@@ -18,22 +21,24 @@ class NativeAdsViewHolder private constructor(private val binding: DialogNativeA
   override fun bind(data: SearchItem) {
     binding.progressBar.isVisible = true
     val templateView = binding.templateView
-    val builder = AdLoader.Builder(itemView.context, Ads.NATIVE_UNIT_ID).apply {
+    val adLoader = AdLoader.Builder(itemView.context, Ads.NATIVE_UNIT_ID).apply {
       forUnifiedNativeAd {
+        val styles = NativeTemplateStyle.Builder()
+          .withCallToActionTextTypeface(Typeface.DEFAULT_BOLD)
+          .build()
+        templateView.setStyles(styles)
         templateView.setNativeAd(it)
         binding.progressBar.isVisible = false
       }
-    }
-    val adLoader = builder.build()
-    val adRequest = AdRequest.Builder().build()
-    adLoader.loadAd(adRequest)
+    }.build()
+    adLoader.loadAd(AdRequest.Builder().build())
   }
 
   companion object {
 
     fun create(parent: ViewGroup): NativeAdsViewHolder {
       return NativeAdsViewHolder(
-        DialogNativeAds2Binding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ViewFeedAdsSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       )
     }
   }

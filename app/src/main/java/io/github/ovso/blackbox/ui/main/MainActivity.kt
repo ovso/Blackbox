@@ -8,7 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.orhanobut.logger.Logger
 import io.github.ovso.blackbox.R
+import io.github.ovso.blackbox.exts.loadAdaptiveBanner
 import io.github.ovso.blackbox.ui.base.view.BaseActivity
+import kotlinx.android.synthetic.main.activity_main2.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainPresenter.View {
@@ -38,5 +40,6 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     navView.setOnNavigationItemReselectedListener {
       Logger.d(it.toString())
     }
+    ads_container.loadAdaptiveBanner()
   }
 }

@@ -34,6 +34,7 @@ class VideoFragmentPresenterImpl(
 
   override fun onViewCreated() {
     view.setupRecyclerView()
+    reqVideo(args.query)
   }
 
   override fun onResume() {
