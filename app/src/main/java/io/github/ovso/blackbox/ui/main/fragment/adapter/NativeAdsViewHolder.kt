@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.formats.NativeAdOptions
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.commons.databinding.ViewFeedAdsSmallBinding
@@ -29,7 +30,7 @@ class NativeAdsViewHolder private constructor(private val binding: ViewFeedAdsSm
         templateView.setStyles(styles)
         templateView.setNativeAd(it)
         binding.progressBar.isVisible = false
-      }
+      }.withNativeAdOptions(NativeAdOptions.Builder().build())
     }.build()
     adLoader.loadAd(AdRequest.Builder().build())
   }

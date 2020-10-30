@@ -1,11 +1,9 @@
 package io.github.ovso.blackbox.ui.main.fragment.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.R
 import io.github.ovso.blackbox.data.network.model.SearchItem
 import io.github.ovso.blackbox.exts.loadAdaptiveBanner
@@ -17,7 +15,8 @@ class BannerAdsViewHolder private constructor(override val containerView: View?)
   ), IBind<SearchItem>, LayoutContainer {
 
   override fun bind(data: SearchItem) {
-    (itemView.context as? Activity)?.loadAdaptiveBanner((itemView as ViewGroup), Ads.BANNER_UNIT_ID)
+//    (itemView.context as? Activity)?.loadAdaptiveBanner((itemView as ViewGroup), Ads.BANNER_UNIT_ID)
+    (itemView as ViewGroup).loadAdaptiveBanner()
   }
 
   companion object {

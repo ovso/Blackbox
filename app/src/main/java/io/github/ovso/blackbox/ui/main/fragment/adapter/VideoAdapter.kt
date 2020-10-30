@@ -24,7 +24,7 @@ class VideoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
   ): RecyclerView.ViewHolder {
     return when (viewType == ITEM_TYPE_NORMAL) {
       true -> VideoViewHolder.create(viewGroup)
-      false -> NativeAdsViewHolder.create(viewGroup)
+      false -> BannerAdsViewHolder.create(viewGroup)
     }
   }
 
