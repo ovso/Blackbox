@@ -4,18 +4,17 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
-import io.github.ovso.commons.databinding.DialogNativeAds2Binding
+import io.github.ovso.commons.databinding.DialogNativeAdsBinding
 
 class NativeAdsDialog(context: Context) : AlertDialog.Builder(context) {
 
   private val binding by lazy {
-    DialogNativeAds2Binding.inflate(LayoutInflater.from(context))
+    DialogNativeAdsBinding.inflate(LayoutInflater.from(context))
   }
 
   private var unitId: String? = null
