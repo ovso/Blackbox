@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.ads.nativetemplates.NativeTemplateStyle
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.formats.NativeAdOptions
 import io.github.ovso.blackbox.Ads
 import io.github.ovso.blackbox.data.network.model.SearchItem
@@ -30,7 +32,12 @@ class NativeAdsViewHolder private constructor(private val binding: ViewFeedAdsSm
         templateView.setStyles(styles)
         templateView.setNativeAd(it)
         binding.progressBar.isVisible = false
-      }.withNativeAdOptions(NativeAdOptions.Builder().build())
+      }
+      withAdListener(object : AdListener() {
+        override fun onAdFailedToLoad(p0: LoadAdError?) {
+          binding.progressBar.isVisible = false
+        }
+      })
     }.build()
     adLoader.loadAd(AdRequest.Builder().build())
   }

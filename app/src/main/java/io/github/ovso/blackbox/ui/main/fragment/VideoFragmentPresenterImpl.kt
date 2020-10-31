@@ -39,7 +39,7 @@ class VideoFragmentPresenterImpl(
 
   override fun onResume() {
     if (args.resId == R.string.query_blackbox_ko) {
-      view.addOnBackPressedDispatcher(onBackPressedCallback)
+      view.addOnBackPressedDispatcher(onBackPressedCallback) // 모든 탭에 동일한 Fragment를 사용하기 때문에 조건에 따른 처리가 필요함.
     }
   }
 
