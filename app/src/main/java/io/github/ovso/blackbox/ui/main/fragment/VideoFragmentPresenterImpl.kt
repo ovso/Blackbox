@@ -86,47 +86,9 @@ class VideoFragmentPresenterImpl(
   }
 
   override fun onLoadMore() {
-/*
-    if (!TextUtils.isEmpty(nextPageToken) && !TextUtils.isEmpty(q)) {
-      val disposable = searchRequest.getResult(q!!, nextPageToken)
-        .subscribeOn(schedulersFacade.io())
-        .observeOn(schedulersFacade.ui())
-        .subscribe(
-          { search ->
-            nextPageToken = search.nextPageToken
-            val items = search.items
-            adapterDataModel.addAll(items!!)
-            view.refresh()
-            view.setLoaded()
-          }, { throwable -> Timber.d(throwable) })
-      compositeDisposable.add(disposable)
-    }
-*/
   }
 
   override fun onRefresh() {
-/*
-    adapterDataModel.clear()
-    view.refresh()
-    nextPageToken = null
-    q = resourceProvider.getStringArray(R.array.q)[position]
-    val disposable = searchRequest.getResult(q!!, nextPageToken)
-      .subscribeOn(schedulersFacade.io())
-      .observeOn(schedulersFacade.ui())
-      .subscribe(
-        { search ->
-          nextPageToken = search.nextPageToken
-          val items = search.items
-          adapterDataModel.addAll(items!!)
-          view.refresh()
-          view.setLoaded()
-          view.hideLoading()
-        }, { throwable ->
-          Timber.d(throwable)
-          view.hideLoading()
-        })
-    compositeDisposable.add(disposable)
-*/
   }
 
 }
