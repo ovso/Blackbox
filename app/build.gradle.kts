@@ -37,17 +37,12 @@ android {
     applicationId = Config.appId
     minSdkVersion(Config.minSdk)
     targetSdkVersion(Config.targetSdk)
-    versionCode = Config.versionCode
-    val versionMajor = 0
-    val versionMinor = 0
-    val versionPatch = versionCode
-
-    versionName = "$versionMajor.$versionMinor.$versionPatch"
+    versionCode = getVersionCode(grGit)
+    versionName = getVersionName(grGit)
     testInstrumentationRunner = "androidx.test.ext.junit.runners.AndroidJUnit4"
-    println("versionName = $versionName")
-    println("versionCode = $versionCode")
+    println("versionName = ${getVersionName(grGit)}")
+    println("versionCode = ${getVersionCode(grGit)}")
     setProperty("archivesBaseName", "blackbox-$versionName")
-    //multiDexEnabled true
   }
 
   bundle {
