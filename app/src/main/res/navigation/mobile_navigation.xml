@@ -22,8 +22,8 @@
         tools:layout="@layout/fragment_video">
         <argument
             android:name="query"
-            app:argType="reference"
-            android:defaultValue="@string/query_mis_ratio" />
+            android:defaultValue="@string/query_mis_ratio"
+            app:argType="reference" />
     </fragment>
     <fragment
         android:id="@+id/navigation_copi_with"
@@ -32,8 +32,8 @@
         tools:layout="@layout/fragment_video">
         <argument
             android:name="query"
-            app:argType="reference"
-            android:defaultValue="@string/query_copi_with" />
+            android:defaultValue="@string/query_copi_with"
+            app:argType="reference" />
     </fragment>
     <fragment
         android:id="@+id/navigation_black_box_overseas"
@@ -42,8 +42,8 @@
         tools:layout="@layout/fragment_video">
         <argument
             android:name="query"
-            app:argType="reference"
-            android:defaultValue="@string/query_blackbox_overseas" />
+            android:defaultValue="@string/query_blackbox_overseas"
+            app:argType="reference" />
     </fragment>
 
 </navigation>
